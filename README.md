@@ -5,5 +5,5 @@ This is a version of https://github.com/wecreus/theCommoner but built with Next.
 
 <div align="center">
 
-![LOGO](./public/theCommoner.png) 
+![LOGO](./app/apple-icon.png) 
 </div>
