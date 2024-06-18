@@ -33,13 +33,12 @@
     transition: all 200ms ease;
 
     &--logo {
-        height: 35px;
-        width: 35px;
-        
-        
-        & > path {
-          fill: url(#footerIconGradient);
-        }
+      height: 65%;
+      width: auto;
+
+      & > path {
+        fill: url(#footerIconGradient);
+      }
     }
 
     &:hover {
