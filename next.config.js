@@ -4,17 +4,18 @@
 const path = require("path");
 
 module.exports = {
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      use: ['@svgr/webpack']
-    });
-    return config;
+  experimental: {
+    turbo: {
+      rules: {
+        "*.svg": {
+          loaders: ["@svgr/webpack"],
+          as: "*.js",
+        },
+      },
+    },
   },
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
     additionalData: `@import "mixins"; @import "variables";`,
   },
 };
-
-
