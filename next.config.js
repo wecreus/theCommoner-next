@@ -8,12 +8,59 @@ module.exports = {
     turbo: {
       rules: {
         "*.svg": {
-          loaders: ["@svgr/webpack"],
+          loaders: [
+            {
+              loader: "@svgr/webpack",
+              // https://stackoverflow.com/a/77957478/10783280
+              options: {
+                svgoConfig: {
+                  plugins: [
+                    {
+                      name: "preset-default",
+                      params: {
+                        overrides: {
+                          removeViewBox: false,
+                        },
+                      },
+                    },
+                  ],
+                },
+              },
+            },
+          ],
           as: "*.js",
         },
       },
     },
   },
+
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/i,
+
+      use: {
+        loader: "@svgr/webpack",
+        // https://stackoverflow.com/a/77957478/10783280
+        options: {
+          svgoConfig: {
+            plugins: [
+              {
+                name: "preset-default",
+                params: {
+                  overrides: {
+                    removeViewBox: false,
+                  },
+                },
+              },
+            ],
+          },
+        },
+      },
+    });
+
+    return config;
+  },
+
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
     additionalData: `@import "mixins"; @import "variables";`,
