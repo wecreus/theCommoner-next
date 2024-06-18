@@ -4,15 +4,14 @@ import { memo, useEffect, useState } from "react";
 import { updateTheme } from "@/lib/features/theme/themeSlice";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 
-// memo() ?
-const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+const ThemeProvider = memo(({ children }: { children: React.ReactNode }) => {
   const storeTheme = useAppSelector((store) => store.theme.storedTheme);
   const [currentTheme, setCurrentTheme] = useState<number>(0);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     const localTheme = localStorage.getItem("theme");
-    // if it exists in localstorage
+    // if it exists in localStorage
     if (localTheme !== null) {
       dispatch(
         updateTheme({
@@ -29,6 +28,8 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   }, [storeTheme]);
 
   return <main className={`theme${currentTheme + 1}`}>{children}</main>;
-};
+});
+
+ThemeProvider.displayName = "ThemeProvider";
 
 export default ThemeProvider;

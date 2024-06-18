@@ -4,6 +4,7 @@ import HalfCircle from "@/public/icons/halfCircle.svg";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { updateTheme } from "@/lib/features/theme/themeSlice";
 import style from "@/styles/exports.module.scss";
+import { memo } from "react";
 import clsx from "clsx";
 
   
@@ -17,8 +18,7 @@ const getTotalThemes = (themes: React.CSSProperties): number => {
   return Number(keys[0].replace("totalThemes", ""));
 }
 
-// memo ?
-const ThemeList = () => {
+const ThemeList = memo(() => {
   const dispatch = useAppDispatch();
   const storeTheme = useAppSelector((store) => store.theme.storedTheme);
   
@@ -51,6 +51,8 @@ const ThemeList = () => {
         })}
     </div>
   );
-};
+});
+
+ThemeList.displayName = "ThemeList";
 
 export default ThemeList;
