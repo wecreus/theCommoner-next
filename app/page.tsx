@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <main className="theme1">
+    <div >
       theCommoner
       <br />
       <br />
@@ -35,6 +35,6 @@ export default function Home() {
       <br />
       <br />
       <br /> sdjkf
-    </main>
+    </div>
   );
 }

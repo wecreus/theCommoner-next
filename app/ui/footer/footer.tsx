@@ -1,4 +1,4 @@
-import "./footer.scss";
+import "./Footer.scss";
 import Github from "@/public/icons/github.svg";
 import CommonerWhite from "@/public/icons/commonerwhite.svg";
 

@@ -1,0 +1,6 @@
+// a hack for exporting variables while still using Turbopack
+// https://github.com/vercel/next.js/issues/61322
+
+.totalThemes#{length($themes)} {
+  color: red;
+}

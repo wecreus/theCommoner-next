@@ -2,18 +2,18 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface ThemeSliceState {
-  storedTheme: null | string;
+  storedTheme: number;
 }
 
 const initialState: ThemeSliceState = {
-  storedTheme: null
+  storedTheme: 0
 };
 
 const themeSlice = createSlice({
   name: "theme",
   initialState,
   reducers: {
-    updateTheme: (state, action: PayloadAction<{ theme: string }>) => {
+    updateTheme: (state, action: PayloadAction<{ theme: number }>) => {
       state.storedTheme = action.payload.theme;
     },
   },

@@ -1,12 +1,12 @@
 "use client";
 
-import "./header.scss";
+import "./Header.scss";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 
-// import ThemeList from "./ThemeList/ThemeList";
+import ThemeSwitcher from "@/app/ui/ThemeSwitcher";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,7 +52,7 @@ const Header = () => {
           <Link href="/contact">contact</Link>
         </li>
       </ul>
-      {/* <ThemeList /> */}
+      <ThemeSwitcher />
     </header>
   );
 };

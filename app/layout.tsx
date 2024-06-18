@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import Footer from "@/app/ui/footer/footer";
-import Header from "@/app/ui/header/header";
+import Footer from "@/app/ui/footer/Footer";
+import Header from "@/app/ui/header/Header";
 import localFont from "next/font/local";
 import StoreProvider from "./StoreProvider";
+import ThemeProvider from "./ui/ThemeProvider";
 import "./globals.scss";
 
 // https://stackoverflow.com/questions/78636740/how-to-specify-font-slant-slnt-when-using-nextjs
@@ -29,9 +30,11 @@ export default function RootLayout({
         /> */}
         </head>
         <body className={`theme1 ${inter.className}`}>
-          <Header />
-          {children}
-          <Footer />
+          <ThemeProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ThemeProvider>
         </body>
       </html>
     </StoreProvider>
