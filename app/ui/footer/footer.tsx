@@ -19,8 +19,7 @@ const Footer = () => {
         rel="noopener noreferrer"
         href="https://github.com/wecreus/theCommoner"
       >
-        {/* Have to explicitly specify the viewBox since Turbopack doesn't support options passed to SVGO loader */}
-        <CommonerWhite className="Footer__item--logo" viewBox="0 0 87 77" />
+        <CommonerWhite className="Footer__item--logo"  />
         theCommoner
       </a>
       <a
@@ -29,7 +28,7 @@ const Footer = () => {
         rel="noopener noreferrer"
         href="https://github.com/wecreus"
       >
-        <Github className="Footer__item--logo" viewBox="0 0 95 95" />
+        <Github className="Footer__item--logo" />
         Danylo Riabchuk
       </a>
     </footer>
