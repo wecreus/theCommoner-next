@@ -4,7 +4,8 @@
   left: 50%;
   background: linear-gradient(
     170deg,
-    rgba(0, 0, 0, 0.4) 0%,
+    rgb(207 205 255 / 6%) 0%,
+    rgba(0, 0, 0, 0.4) 25%,
     color-mix(in srgb, var(--primary) 10%, transparent) 120%
   );
   height: 80px;
