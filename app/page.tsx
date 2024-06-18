@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, lazy, Suspense, useEffect, useMemo } from "react";
-// import Welcome from "./HomeComponents/Welcome";
+import Welcome from "@/app/ui/welcome/Welcome";
 // import MainPageSelector from "./HomeComponents/MainPageSelector";
 // import useIntersectionObserver from "@/common/hooks/useIntersectionObserver";
 // import LoadingSpinner from "@/common/LoadingSpinner/LoadingSpinner";
@@ -29,12 +29,12 @@ const Home = () => {
 
   // const refList = [welcomeRef, reviewsRef, galleryRef, mapRef];
 
-  // const handlePageChange = (page) => {
-  //   refList[page].current.scrollIntoView({
-  //     behavior: "smooth",
-  //     block: "center",
-  //   });
-  // };
+  const handlePageChange = (page: number) => {
+    // refList[page].current.scrollIntoView({
+    //   behavior: "smooth",
+    //   block: "center",
+    // });
+  };
 
   // // should update page number on scroll
   // useEffect(() => {
@@ -54,8 +54,7 @@ const Home = () => {
         handlePageChange={handlePageChange}
       /> */}
       <section className="card card-welcome">
-        welcome
-        {/* <Welcome onScrollClick={() => handlePageChange(1)} /> */}
+        <Welcome onScrollClick={() => handlePageChange(1)} />
       </section>
       <section className="card card-reviews">
         {/* Reviews needs to know when user scrolls to it */}

@@ -4,6 +4,7 @@ import Header from "@/app/ui/header/Header";
 import localFont from "next/font/local";
 import StoreProvider from "./StoreProvider";
 import ThemeProvider from "./ui/ThemeProvider";
+import GradientSVG from "./ui/GradientSVG";
 import "@/styles/globals.scss";
 
 // https://stackoverflow.com/questions/78636740/how-to-specify-font-slant-slnt-when-using-nextjs
@@ -34,6 +35,18 @@ export default function RootLayout({
             <Header />
             {children}
             <Footer />
+            <GradientSVG
+              idCSS={"gBaseColors"}
+              endColor={"var(--support)"}
+              startColor={"var(--secondary)"}
+              rotation={"45"}
+            />
+            <GradientSVG
+              idCSS={"iconGradient"}
+              startColor={"#ffffff"}
+              endColor={"#ffffff88"}
+              rotation={"0"}
+            />
           </ThemeProvider>
         </body>
       </html>
