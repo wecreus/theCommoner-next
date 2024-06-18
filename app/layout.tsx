@@ -29,7 +29,7 @@ export default function RootLayout({
           href="//fonts.googleapis.com/css2?family=Inter:slnt,wght@-8,100..900&display=swap"
         /> */}
         </head>
-        <body className={`theme1 ${inter.className}`}>
+        <body className={inter.className}>
           <ThemeProvider>
             <Header />
             {children}
