@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface ThemeSliceState {
-  storedTheme: number;
+  storedTheme: number | null;
 }
 
 const initialState: ThemeSliceState = {
-  storedTheme: 0
+  storedTheme: null
 };
 
 const themeSlice = createSlice({

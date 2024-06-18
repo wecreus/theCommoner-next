@@ -12,19 +12,27 @@ const ThemeProvider = memo(({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const localTheme = localStorage.getItem("theme");
     // if it exists in localStorage
+
     if (localTheme !== null) {
       dispatch(
         updateTheme({
           theme: JSON.parse(localTheme),
         })
       );
-    } 
+    } else {
+      localStorage.setItem("theme", "0");
+      dispatch(
+        updateTheme({
+          theme: 0,
+        })
+      );
+    }
   }, [dispatch]);
-
+  
   // when redux value changes update state
   useEffect(() => {
-    setCurrentTheme(storeTheme);
-    localStorage.setItem("theme", String(storeTheme));
+    setCurrentTheme(storeTheme || 0);
+    localStorage.setItem("theme", String(storeTheme || 0));
   }, [storeTheme]);
 
   return <main className={`theme${currentTheme + 1}`}>{children}</main>;
