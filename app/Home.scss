@@ -10,7 +10,7 @@
   margin: 0;
   width: 50%;
   box-sizing: border-box;
-  align-items: end;
+  align-items: flex-end;
   padding: 15px 12px;
 
   @include fromDesktopScreen {
