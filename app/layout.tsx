@@ -4,7 +4,7 @@ import Header from "@/app/ui/header/Header";
 import localFont from "next/font/local";
 import StoreProvider from "./StoreProvider";
 import ThemeProvider from "./ui/ThemeProvider";
-import "./globals.scss";
+import "@/styles/globals.scss";
 
 // https://stackoverflow.com/questions/78636740/how-to-specify-font-slant-slnt-when-using-nextjs
 const inter = localFont({ src: "../fonts/Inter.woff2" });

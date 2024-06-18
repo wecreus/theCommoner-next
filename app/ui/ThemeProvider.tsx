@@ -1,8 +1,8 @@
 "use client";
 
 import { memo, useEffect, useState } from "react";
-import { updateTheme } from "@/lib/features/theme/themeSlice";
-import { useAppSelector, useAppDispatch } from "@/lib/hooks";
+import { updateTheme } from "@/app/lib/features/theme/themeSlice";
+import { useAppSelector, useAppDispatch } from "@/app/lib/hooks";
 
 const ThemeProvider = memo(({ children }: { children: React.ReactNode }) => {
   const storeTheme = useAppSelector((store) => store.theme.storedTheme);
