@@ -7,6 +7,7 @@ import "./globals.scss";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://commoner.vercel.app/'),
   title: "theCommoner",
   description: "Portfolio website made by Danylo Riabchuk",
 };
