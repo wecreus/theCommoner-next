@@ -48,9 +48,9 @@ const Header = () => {
       </picture>
 
       <ul className="Header-sections">
-        <li className="Header-sections__section">
-          <Link href="/contact">contact</Link>
-        </li>
+        <Link href="/contact" className="Header-sections__section">
+          <li >contact</li>
+        </Link>
       </ul>
       <ThemeSwitcher />
     </header>
