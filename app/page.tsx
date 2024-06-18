@@ -1,7 +1,8 @@
 
 export default function Home() {
+
   return (
-    <main>
+    <main className="theme1">
       theCommoner
     </main>
   );
