@@ -25,30 +25,6 @@ export default function Reviews({ reviews }: { reviews: ReviewType[] }) {
 
   if (!reviews || reviews.length === 0) return <div>No reviews found</div>;
 
-  // const [reviews, setReviews] = useState();
-  // const [currentSlide, setCurrentSlide] = useState(0);
-
-  // useEffect(() => {
-  //   const parseReviews = async() => {
-  //     const reviews = await getReviews();
-  //     console.log(reviews);
-  //     return [
-  //     ...reviews.map((review) => {
-  //       return {
-  //         ...review,
-  //         description: markdownParser(review.description),
-  //         funFact: markdownParser(review.funFact),
-  //       };
-  //     }),
-  //   ]};
-
-  //   // if (import.meta.env.MODE === "development") {
-  //   //   setReviews(parseReviews(GalleryMock));
-  //   //   return;
-  //   // }
-  //   parseReviews();
-  // }, []);
-
   return (
     <div className="reviews animate-render">
       <p className="card__content card-reviews__content">

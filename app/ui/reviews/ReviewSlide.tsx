@@ -1,7 +1,6 @@
 import { memo } from "react";
-// import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-// import ProgressProvider from "@/common/Progressbar/ProgressbarProvider";
-// import Divider from "@/common/Divider/Divider";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import ProgressProvider from "@/app/ui/common/ProgressbarProvider";
 import { type ReviewType } from "@/app/lib/data.types";
 import Divider from "@/app/ui/common/Divider/Divider";
 
@@ -31,22 +30,21 @@ const ReviewSlide = memo(
           <span className="review-slide__title">{name}</span>
           <div className="review-slide__score-container" title="Rating">
             <span className="review-slide__score--title">Rating:</span>
-            {/* <ProgressProvider
+            <ProgressProvider
               valueStart={1}
-              valueEnd={focused && selected ? score : 0}
+              valueEnd={Number(selected ? score : 0)}
               duration={1500}
               delay={200}
-              repeat
             >
               {(CircleValue) => (
                 <CircularProgressbar
                   value={Math.round(CircleValue)}
                   minValue={0}
                   maxValue={100}
-                  text={<tspan dy={2}>{Math.round(CircleValue)}</tspan>}
+                  text={String(Math.round(CircleValue))}
                   className={"review-slide__score"}
                   background={true}
-                  backgroundPadding="10"
+                  backgroundPadding={10}
                   styles={buildStyles({
                     rotation: 0.26,
                     trailColor: "transparent",
@@ -55,7 +53,7 @@ const ReviewSlide = memo(
                   })}
                 />
               )}
-            </ProgressProvider> */}
+            </ProgressProvider>
           </div>
         </div>
         <div className="review-slide__content">
