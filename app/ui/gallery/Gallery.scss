@@ -1,0 +1,153 @@
+.carousel-gallery {
+  filter: drop-shadow(8px 4px 15px rgba(0, 0, 0, 0.226));
+  cursor: pointer;
+  max-width: 900px;
+  max-height: 100vh;
+  width: 100%;
+  position: relative;
+  grid-area: gallery;
+
+  & .carousel {
+    border-radius: 15px;
+  }
+
+  &:before {
+    content: "";
+    pointer-events: none;
+    opacity: 1;
+    transition: all 200ms ease;
+    width: 45px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    bottom: -25px;
+    left: 15px;
+    background-image: url('../../../public/icons/pointing.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: screen;
+    z-index: 1;
+    animation: animateDrag 5500ms infinite;
+    animation-timing-function: ease-out;
+    filter: drop-shadow(3px 4px 6px rgba(0, 0, 0, 0.26));
+    visibility: visible;
+    transition: all 300ms ease-in-out;
+
+    @include toPhoneScreen {
+      width: 35px;
+    }
+  }
+
+  &__image {
+    aspect-ratio: 8/5;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: screen;
+
+    & > span {
+      position: relative;
+      z-index: -1;
+    }
+  }
+}
+
+.card__gallery {
+  display: grid;
+  position: relative;
+  max-height: 100vh;
+  grid-template-rows: auto auto;
+  grid-template-columns: 58% auto;
+  grid-template-areas:
+    "gallery text"
+    "gallery links";
+  gap: 35px;
+  font-size: 35px;
+  width: 100%;
+
+  &--text {
+    grid-area: text;
+    flex-basis: 100%;
+    font-size: 90%;
+  }
+
+  &--links {
+    grid-area: links;
+    font-size: 75%;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  @include toDesktopScreenMid {
+    font-size: 30px;
+    gap: 25px;
+    padding: 0 25px;
+    grid-template-columns: 50% auto;
+    &.card__content {
+      padding: 0 25px 25px 25px;
+    }
+
+    &--text {
+      font-size: 70%;
+    }
+  }
+  @include toTabletScreen {
+    padding: 0;
+    grid-template-areas:
+      "text"
+      "gallery"
+      "links";
+    grid-template-columns: 100%;
+
+    &--links {
+      flex-wrap: nowrap;
+    }
+
+    &--text {
+      flex: 0 0 100%;
+    }
+
+    &--links {
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+  }
+
+  @include toPhoneScreen {
+    font-size: 20px;
+    line-height: 25px;
+
+    &--text { 
+      font-size: 100%;
+    }
+  }
+}
+
+@keyframes animateDrag {
+  0%,
+  10% {
+    opacity: 0;
+    margin-left: 40px;
+    transform: rotate(10deg);
+  }
+  15% {
+    margin-left: 40px;
+    transform: rotate(10deg);
+    opacity: 1;
+  }
+  40% {
+    margin-left: -20px;
+    opacity: 1;
+    transform: rotate(-10deg);
+  }
+  45% {
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(-10deg);
+    margin-left: -20px;
+    opacity: 0;
+  }
+}

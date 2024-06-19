@@ -2,6 +2,7 @@
 
 import { useState, lazy, Suspense, useEffect, useMemo } from "react";
 import Welcome from "@/app/ui/welcome/Welcome";
+import Gallery from "@/app/ui/gallery/Gallery";
 // import MainPageSelector from "./HomeComponents/MainPageSelector";
 // import useIntersectionObserver from "@/common/hooks/useIntersectionObserver";
 // import LoadingSpinner from "@/common/LoadingSpinner/LoadingSpinner";
@@ -68,6 +69,7 @@ const Home = () => {
         */}
       </section>
       <section className="card card-gallery">
+      <Gallery />
         {/* {wasGalleryVisible && (
           <Suspense fallback={<LoadingSpinner />}>
             <Gallery />
