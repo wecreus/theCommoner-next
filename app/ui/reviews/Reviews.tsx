@@ -7,10 +7,11 @@ import { Carousel } from "react-responsive-carousel";
 // import classNames from "classnames";
 // import { GalleryMock } from "@/common/mocks";
 // import markdownParser from "@/common/markdownParser/markdownParser";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "react-circular-progressbar/dist/styles.css";
+
 import { type ReviewType } from "@/app/lib/data.types";
 import ReviewSlide from "./ReviewSlide";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "react-circular-progressbar/dist/styles.css";
 import "./Reviews.scss";
 
 // TODO:
