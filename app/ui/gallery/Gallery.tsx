@@ -1,14 +1,18 @@
 
 
 import "./Gallery.scss";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import { memo } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { GalleryPictures } from "@/app/lib/data";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import SocialIcon from "@/app/ui/socialIcon/SocialIcon";
+
 // import { Flickr, GalleryPictures, Instagram, Xcom } from "@/common/utils";
 
-// import SocialIcon from "@/common/SocialIcon/SocialIcon";
+import Flickr from "@/public/icons/flickr.svg";
+import Instagram from "@/public/icons/instagram.svg";
+import Xcom from "@/public/icons/Xcom.svg";
 
 const Gallery = memo(() => {
   return (
@@ -49,7 +53,7 @@ const Gallery = memo(() => {
         <span className="card__gallery--text">
           Find more of my photos on socials:
         </span>
-        {/* <SocialIcon
+        <SocialIcon
           name="Instagram"
           gradient={
             "linear-gradient(135deg, #405DE6 -20%, #E1306C 30%, #FCAF45 120%)"
@@ -68,7 +72,7 @@ const Gallery = memo(() => {
           gradient={"linear-gradient(135deg, #000 0%, #000 80%)"}
           Icon={Xcom}
           url={"https://www.x.com/wecreus"}
-        /> */}
+        />
       </div>
     </div>
   );
