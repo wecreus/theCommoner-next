@@ -6,7 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { memo } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { type GalleryType } from "@/app/lib/data.types";
-import SocialIcon from "@/app/ui/socialIcon/SocialIcon";
+import SocialIcon from "@/app/ui/common/SocialIcon/SocialIcon";
 import Flickr from "@/public/icons/flickr.svg";
 import Instagram from "@/public/icons/instagram.svg";
 import Xcom from "@/public/icons/Xcom.svg";

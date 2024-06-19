@@ -2,7 +2,7 @@ import "./Footer.scss";
 import Github from "@/public/icons/github.svg";
 import CommonerWhite from "@/public/icons/commonerwhite.svg";
 
-import GradientSVG from "@/app/ui/GradientSVG";
+import GradientSVG from "@/app/ui/common/GradientSVG";
 
 const Footer = () => {
   return (

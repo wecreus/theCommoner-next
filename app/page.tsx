@@ -1,6 +1,6 @@
-import Welcome from "@/app/ui/welcome/Welcome";
-import Gallery from "@/app/ui/gallery/Gallery";
-import Reviews from "@/app/ui/reviews/Reviews";
+import Welcome from "@/app/ui/Welcome/Welcome";
+import Gallery from "@/app/ui/Gallery/Gallery";
+import Reviews from "@/app/ui/Reviews/Reviews";
 import Loading from "./loading";
 import { getReviews } from "@/app/lib/data";
 import { GalleryPictures } from "@/app/lib/data";
