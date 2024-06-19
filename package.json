@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@firebase/firestore": "^4.6.3",
     "@reduxjs/toolkit": "^2.2.5",
     "clsx": "^2.1.1",
+    "firebase": "^10.12.2",
     "next": "15.0.0-rc.0",
     "react": "19.0.0-rc-fb9a90fa48-20240614",
     "react-dom": "19.0.0-rc-fb9a90fa48-20240614",
