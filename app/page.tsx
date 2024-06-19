@@ -15,6 +15,10 @@ import "./Home.scss";
 const Gallery = dynamic(() => import("@/app/ui/gallery/Gallery"), {
   loading: () => <Loading />,
 });
+
+const Reviews = dynamic(() => import("@/app/ui/reviews/Reviews"), {
+  loading: () => <Loading />,
+});
 // const Map = lazy(() => import("./HomeComponents/Map/Map"));
 
 const Home = () => {
@@ -60,18 +64,17 @@ const Home = () => {
         handlePageChange={handlePageChange}
       /> */}
       <section className="card card-welcome">
-        <Suspense>
-          <Welcome onScrollClick={() => handlePageChange(1)} />
-        </Suspense>
+        <Welcome onScrollClick={() => handlePageChange(1)} />
       </section>
 
       <section className="card card-reviews">
+        <Reviews focused={true} />
         {/* Reviews needs to know when user scrolls to it */}
         {/*
         {wasReviewsVisible && (
           <Suspense fallback={<LoadingSpinner />}>
             
-            <Reviews focused={isReviewsVisible} />
+            
           </Suspense>
         )} 
         */}
