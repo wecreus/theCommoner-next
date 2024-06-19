@@ -3,7 +3,7 @@ import { memo } from "react";
 // import ProgressProvider from "@/common/Progressbar/ProgressbarProvider";
 // import Divider from "@/common/Divider/Divider";
 import { type ReviewType } from "@/app/lib/data.types";
-import Pen from "@/public/icons/penoriginal.svg";
+import Divider from "@/app/ui/common/Divider/Divider";
 
 type ReviewSlideProps = Omit<ReviewType, "id"> & { selected: boolean };
 
@@ -59,9 +59,9 @@ const ReviewSlide = memo(
           </div>
         </div>
         <div className="review-slide__content">
-          {/* <Divider className={"review-slide__divider"}>
+          <Divider className={"review-slide__divider"}>
             <div className="review-slide__divider--content">REVIEW</div>
-          </Divider> */}
+          </Divider>
           <p
             className="review-slide__description"
             dangerouslySetInnerHTML={{ __html: description }}
