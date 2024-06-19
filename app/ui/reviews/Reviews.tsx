@@ -1,26 +1,29 @@
 "use client";
-// import { useState, useEffect, memo } from "react";
+import { useState } from "react";
 
-// import { Carousel } from "react-responsive-carousel";
+import { Carousel } from "react-responsive-carousel";
 // import { AlienMonster } from "@/common/utils";
 // import ReviewSlide from "./ReviewSlide";
 // import classNames from "classnames";
 // import { GalleryMock } from "@/common/mocks";
 // import markdownParser from "@/common/markdownParser/markdownParser";
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
-// import "react-circular-progressbar/dist/styles.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "react-circular-progressbar/dist/styles.css";
 import { type ReviewType } from "@/app/lib/data.types";
+import ReviewSlide from "./ReviewSlide";
 import "./Reviews.scss";
-
 
 // TODO:
 // 1. markdown parser
 // 2. render reviews in a good way
 // 3. mock data for development
-const markdownParser = (value: any) => value; 
+const markdownParser = (value: any) => value;
 
-export default function Reviews ({ reviews }: { reviews: ReviewType[]}) { 
-  if(!reviews || reviews.length === 0) return <div>No reviews found</div>;
+export default function Reviews({ reviews }: { reviews: ReviewType[] }) {
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+
+  if (!reviews || reviews.length === 0) return <div>No reviews found</div>;
+
   // const [reviews, setReviews] = useState();
   // const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -45,18 +48,13 @@ export default function Reviews ({ reviews }: { reviews: ReviewType[]}) {
   //   parseReviews();
   // }, []);
 
-
-
   return (
     <div className="reviews animate-render">
-      {reviews.map((review, i) => (
-        <p key={review.name + i}>{review.name}</p>
-      ))}
-      {/*
-    
       <p className="card__content card-reviews__content">
         My <b>100% correct</b> and totally unbiased game reviews{" "}
-        <img src={AlienMonster} alt="" className="emoji" />
+        <picture>
+          <img src={"/icons/AlienMonster.webp"} alt="" className="emoji" />
+        </picture>
       </p>
       <Carousel
         showThumbs={false}
@@ -98,22 +96,19 @@ export default function Reviews ({ reviews }: { reviews: ReviewType[]}) {
       >
         {reviews?.map((review, i) => (
           <ReviewSlide
-            url={review.coverUrl}
+            coverUrl={review.coverUrl}
             name={review.name}
             score={review.score}
             description={review.description}
             funFact={review.funFact}
             selected={i === currentSlide}
             key={review.name + i}
-            focused={focused}
           />
         ))}
       </Carousel>
-    
-    */}
     </div>
   );
-};
+}
 
 interface CustomArrowProps {
   clickHandler: () => void;
