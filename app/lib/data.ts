@@ -1,4 +1,10 @@
-export const GalleryPictures = [
+
+interface GalleryPicture {
+  title: string;
+  url: string;
+};
+
+export const GalleryPictures: GalleryPicture[] = [
   {
     title: "Best",
     url: "https://live.staticflickr.com/65535/53702745672_829a55ffef_b.jpg",
