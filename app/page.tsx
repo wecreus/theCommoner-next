@@ -1,15 +1,20 @@
-'use client';
+"use client";
 
 import { useState, lazy, Suspense, useEffect, useMemo } from "react";
 import Welcome from "@/app/ui/welcome/Welcome";
-import Gallery from "@/app/ui/gallery/Gallery";
+// import Gallery from "@/app/ui/gallery/Gallery";
 // import MainPageSelector from "./HomeComponents/MainPageSelector";
 // import useIntersectionObserver from "@/common/hooks/useIntersectionObserver";
 // import LoadingSpinner from "@/common/LoadingSpinner/LoadingSpinner";
+import dynamic from "next/dynamic";
+import Loading from "./loading";
 import "./Home.scss";
 
 // const Reviews = lazy(() => import("./HomeComponents/Reviews/Reviews"));
-// const Gallery = lazy(() => import("./HomeComponents/Gallery/Gallery"));
+// const Gallery = lazy(() => import("@/app/ui/gallery/Gallery"));
+const Gallery = dynamic(() => import("@/app/ui/gallery/Gallery"), {
+  loading: () => <Loading />,
+});
 // const Map = lazy(() => import("./HomeComponents/Map/Map"));
 
 const Home = () => {
@@ -55,8 +60,11 @@ const Home = () => {
         handlePageChange={handlePageChange}
       /> */}
       <section className="card card-welcome">
-        <Welcome onScrollClick={() => handlePageChange(1)} />
+        <Suspense>
+          <Welcome onScrollClick={() => handlePageChange(1)} />
+        </Suspense>
       </section>
+
       <section className="card card-reviews">
         {/* Reviews needs to know when user scrolls to it */}
         {/*
@@ -69,7 +77,8 @@ const Home = () => {
         */}
       </section>
       <section className="card card-gallery">
-      <Gallery />
+        <Gallery />
+
         {/* {wasGalleryVisible && (
           <Suspense fallback={<LoadingSpinner />}>
             <Gallery />
