@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface ThemeSliceState {
+  /** Number indicating position in the array of themes (_variables.scss). **/
   storedTheme: number | null;
 }
 
