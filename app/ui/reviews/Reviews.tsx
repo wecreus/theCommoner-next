@@ -1,7 +1,6 @@
 "use client";
-import { useState, useEffect, memo } from "react";
-// import db from "@/firebase-config";
-// import { collection, getDocs } from "firebase/firestore";
+// import { useState, useEffect, memo } from "react";
+
 // import { Carousel } from "react-responsive-carousel";
 // import { AlienMonster } from "@/common/utils";
 // import ReviewSlide from "./ReviewSlide";
@@ -10,51 +9,49 @@ import { useState, useEffect, memo } from "react";
 // import markdownParser from "@/common/markdownParser/markdownParser";
 // import "react-responsive-carousel/lib/styles/carousel.min.css";
 // import "react-circular-progressbar/dist/styles.css";
+import { type ReviewType } from "@/app/lib/data.types";
 import "./Reviews.scss";
 
-interface ReviewsProps {
-  /* when user scrolls into view should start animating the circle*/
-  focused: boolean;
-}
 
-// TODO: decrease reviews bundle size (300kb wtf)
-const Reviews = ({ focused }: ReviewsProps) => {
-  const [reviews, setReviews] = useState();
-  const [currentSlide, setCurrentSlide] = useState(0);
+// TODO:
+// 1. markdown parser
+// 2. render reviews in a good way
+// 3. mock data for development
+const markdownParser = (value: any) => value; 
+
+export default function Reviews ({ reviews }: { reviews: ReviewType[]}) { 
+  if(!reviews || reviews.length === 0) return <div>No reviews found</div>;
+  // const [reviews, setReviews] = useState();
+  // const [currentSlide, setCurrentSlide] = useState(0);
 
   // useEffect(() => {
-  //   const parseReviews = (rawReviews) => [
-  //     ...rawReviews.map((review) => {
+  //   const parseReviews = async() => {
+  //     const reviews = await getReviews();
+  //     console.log(reviews);
+  //     return [
+  //     ...reviews.map((review) => {
   //       return {
   //         ...review,
   //         description: markdownParser(review.description),
   //         funFact: markdownParser(review.funFact),
   //       };
   //     }),
-  //   ];
+  //   ]};
 
-  //   if (import.meta.env.MODE === "development") {
-  //     setReviews(parseReviews(GalleryMock));
-  //     return;
-  //   }
-
-  //   const reviewsCollectionRef = collection(db, "reviews");
-  //   const getReviews = async () => {
-  //     const data = await getDocs(reviewsCollectionRef);
-  //     setReviews(
-  //       parseReviews(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-  //     );
-  //   };
-
-  //   getReviews().catch((e) => {
-  //     console.error(e);
-  //     setReviews(parseReviews(GalleryMock));
-  //   });
+  //   // if (import.meta.env.MODE === "development") {
+  //   //   setReviews(parseReviews(GalleryMock));
+  //   //   return;
+  //   // }
+  //   parseReviews();
   // }, []);
+
+
 
   return (
     <div className="reviews animate-render">
-      reviews
+      {reviews.map((review, i) => (
+        <p key={review.name + i}>{review.name}</p>
+      ))}
       {/*
     
       <p className="card__content card-reviews__content">
@@ -134,4 +131,4 @@ const CustomArrow = ({ clickHandler, direction }: CustomArrowProps) => {
   );
 };
 
-export default Reviews;
+// export default Reviews;

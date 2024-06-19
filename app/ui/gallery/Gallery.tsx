@@ -1,20 +1,19 @@
-
+'use client';
 
 import "./Gallery.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import { memo } from "react";
 import { Carousel } from "react-responsive-carousel";
-import { GalleryPictures } from "@/app/lib/data";
+import { type GalleryType } from "@/app/lib/data.types";
 import SocialIcon from "@/app/ui/socialIcon/SocialIcon";
-
-// import { Flickr, GalleryPictures, Instagram, Xcom } from "@/common/utils";
-
 import Flickr from "@/public/icons/flickr.svg";
 import Instagram from "@/public/icons/instagram.svg";
 import Xcom from "@/public/icons/Xcom.svg";
 
-const Gallery = memo(() => {
+const Gallery = memo(({gallery}: {gallery: GalleryType[]}) => {
+  if(!gallery || gallery.length === 0) return <div>No gallery pictures found</div>;
+  
   return (
     <div className="card__content card__gallery animate-render">
       <Carousel
@@ -31,7 +30,7 @@ const Gallery = memo(() => {
         autoPlay={true}
         infiniteLoop={true}
       >
-        {GalleryPictures.map((picture, i) => (
+        {gallery.map((picture, i) => (
           <div
             style={{
               backgroundImage: "url(" + picture.url + ")",

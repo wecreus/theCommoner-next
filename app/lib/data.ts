@@ -1,10 +1,9 @@
+import db from "@/app/lib/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
-interface GalleryPicture {
-  title: string;
-  url: string;
-};
+import { type GalleryType, ReviewType } from "./data.types";
 
-export const GalleryPictures: GalleryPicture[] = [
+export const GalleryPictures: GalleryType[] = [
   {
     title: "Best",
     url: "https://live.staticflickr.com/65535/53702745672_829a55ffef_b.jpg",
@@ -26,3 +25,18 @@ export const GalleryPictures: GalleryPicture[] = [
     url: "https://live.staticflickr.com/65535/53703858408_ddbbfea3a3_b.jpg",
   },
 ];
+
+export async function getReviews(): Promise<ReviewType[]> {
+  try {
+    const reviewsCollectionRef = collection(db, "reviews");
+
+    const data = await getDocs(reviewsCollectionRef);
+    
+    return data.docs.map((doc) => ({ ...doc.data(), id: doc.id })) as ReviewType[];
+    
+  } catch (error) {
+    console.error("Database Error:", error);
+    return [];
+    // throw new Error("Failed to fetch revenue data.");
+  }
+}

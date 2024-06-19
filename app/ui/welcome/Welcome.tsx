@@ -1,11 +1,10 @@
 "use client";
 
-import { memo } from "react";
 import CoolArrow from "@/public/icons/arrow.svg";
 
 import { ReactTyped, Typed } from "react-typed";
 
-const Welcome = memo(({ onScrollClick }: { onScrollClick: () => void }) => {
+const Welcome = () => {
   return (
     <>
       <p className="card__content welcome">
@@ -39,13 +38,11 @@ const Welcome = memo(({ onScrollClick }: { onScrollClick: () => void }) => {
           <img src={"/icons/Technologist.webp"} alt="" className="emoji" />
         </picture>
       </p>
-      <div className="card__arrow" onClick={onScrollClick}>
+      <div className="card__arrow">
         <CoolArrow className="card__arrow-img" />
       </div>
     </>
   );
-});
-
-Welcome.displayName = "Welcome";
+};
 
 export default Welcome;
