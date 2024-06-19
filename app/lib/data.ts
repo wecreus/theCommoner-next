@@ -1,5 +1,6 @@
 import db from "@/app/lib/firestore";
 import { collection, getDocs } from "firebase/firestore";
+import { unstable_cache as cache } from "next/cache";
 
 import { type GalleryType, ReviewType } from "./data.types";
 
@@ -26,7 +27,7 @@ export const GalleryPictures: GalleryType[] = [
   },
 ];
 
-export async function getReviews(): Promise<ReviewType[]> {
+async function getReviewsImpl(): Promise<ReviewType[]> {
   try {
     const reviewsCollectionRef = collection(db, "reviews");
 
@@ -40,3 +41,12 @@ export async function getReviews(): Promise<ReviewType[]> {
     // throw new Error("Failed to fetch revenue data.");
   }
 }
+
+export const getReviews = cache(
+  /* fetch function */ getReviewsImpl,
+  /* unique key     */ ["getReviews"],
+  /* options        */ {
+    tags: ["getReviews"],
+    revalidate: 60 * 60 * 24 /* same as fetch.revalidate */
+  }
+)
