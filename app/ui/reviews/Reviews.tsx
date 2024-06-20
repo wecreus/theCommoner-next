@@ -1,24 +1,11 @@
 "use client";
 import { useState } from "react";
-
 import { Carousel } from "react-responsive-carousel";
-// import { AlienMonster } from "@/common/utils";
-// import ReviewSlide from "./ReviewSlide";
-// import classNames from "classnames";
-// import { GalleryMock } from "@/common/mocks";
-// import markdownParser from "@/common/markdownParser/markdownParser";
-
 import { type ReviewType } from "@/app/lib/data.types";
 import ReviewSlide from "./ReviewSlide";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-circular-progressbar/dist/styles.css";
 import "./Reviews.scss";
-
-// TODO:
-// 1. markdown parser
-// 2. render reviews in a good way
-// 3. mock data for development
-const markdownParser = (value: any) => value;
 
 export default function Reviews({ reviews }: { reviews: ReviewType[] }) {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
@@ -102,5 +89,3 @@ const CustomArrow = ({ clickHandler, direction }: CustomArrowProps) => {
     ></div>
   );
 };
-
-// export default Reviews;

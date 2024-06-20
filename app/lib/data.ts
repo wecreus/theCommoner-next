@@ -1,6 +1,7 @@
 import db from "@/app/lib/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import { unstable_cache as cache } from "next/cache";
+import { linkMarkdownParser } from "@/app/lib/helpers";
 
 import { type GalleryType, ReviewType } from "./data.types";
 
@@ -32,9 +33,17 @@ async function getReviewsImpl(): Promise<ReviewType[]> {
     const reviewsCollectionRef = collection(db, "reviews");
 
     const data = await getDocs(reviewsCollectionRef);
-    
-    return data.docs.map((doc) => ({ ...doc.data(), id: doc.id })) as ReviewType[];
-    
+
+    return data.docs.map((doc) => {
+      const data = doc.data();
+
+      return {
+        ...data,
+        id: doc.id,
+        funFact: linkMarkdownParser(data.funFact),
+        description: linkMarkdownParser(data.description),
+      } as ReviewType;
+    });
   } catch (error) {
     console.error("Database Error:", error);
     return [];
@@ -47,6 +56,6 @@ export const getReviews = cache(
   /* unique key     */ ["getReviews"],
   /* options        */ {
     tags: ["getReviews"],
-    revalidate: 60 * 60 * 24 /* same as fetch.revalidate */
+    revalidate: 60 * 60 * 24 /* same as fetch.revalidate */,
   }
-)
+);

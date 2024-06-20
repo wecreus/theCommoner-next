@@ -34,7 +34,7 @@ const ReviewSlide = memo(
               valueStart={1}
               valueEnd={Number(selected ? score : 0)}
               duration={1500}
-              delay={200}
+              delay={150}
             >
               {(CircleValue) => (
                 <CircularProgressbar
@@ -64,14 +64,14 @@ const ReviewSlide = memo(
             className="review-slide__description"
             dangerouslySetInnerHTML={{ __html: description }}
           ></p>
-          {/* {!!funFact && (
+          {!!funFact && (
             <>
               <Divider className={"review-slide__divider"}>
                 <div className="review-slide__divider--content">
                   FUN FACT
                   <i
                     style={{
-                      backgroundImage: `url("${Pen}")`,
+                      backgroundImage: `url(icons/penoriginal.svg)`,
                     }}
                     className="review-slide__divider--icon"
                   />
@@ -82,7 +82,7 @@ const ReviewSlide = memo(
                 dangerouslySetInnerHTML={{ __html: funFact }}
               ></div>
             </>
-          )} */}
+          )}
         </div>
       </div>
     );
