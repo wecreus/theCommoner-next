@@ -4,6 +4,7 @@ import { collection, getDocs } from "firebase/firestore";
 import linkMarkdownParser from "@/app/lib/utils/linkMarkdownParser";
 import { type GalleryType, ReviewType } from "./data.types";
 
+// TODO: add revalidate
 export async function getGallery(): Promise<GalleryType[]> {
   return [
     {
