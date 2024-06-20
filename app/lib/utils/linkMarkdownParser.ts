@@ -1,6 +1,6 @@
 import DOMPurify from "isomorphic-dompurify";
 
-export const linkMarkdownParser = (data?: string, className?: string) => {
+const linkMarkdownParser = (data?: string, className?: string) => {
   if (!data) return "";
 
   let result = String(data);
@@ -24,3 +24,5 @@ export const linkMarkdownParser = (data?: string, className?: string) => {
 
   return DOMPurify.sanitize(result, { ADD_ATTR: ["target"] });
 };
+
+export default linkMarkdownParser;

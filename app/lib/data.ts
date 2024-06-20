@@ -1,7 +1,7 @@
 "use server";
 import db from "@/app/lib/firestore";
 import { collection, getDocs } from "firebase/firestore";
-import { linkMarkdownParser } from "@/app/lib/helpers";
+import linkMarkdownParser from "@/app/lib/utils/linkMarkdownParser";
 import { type GalleryType, ReviewType } from "./data.types";
 
 export async function getGallery(): Promise<GalleryType[]> {
