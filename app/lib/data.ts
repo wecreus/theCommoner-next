@@ -3,34 +3,18 @@ import db from "@/app/lib/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import linkMarkdownParser from "@/app/lib/utils/linkMarkdownParser";
 import { type GalleryType, ReviewType } from "./data.types";
+import { mockGallery, mockReviews } from "./mocks";
 
 // TODO: add revalidate
 export async function getGallery(): Promise<GalleryType[]> {
-  return [
-    {
-      title: "Best",
-      url: "https://live.staticflickr.com/65535/53702745672_829a55ffef_b.jpg",
-    },
-    {
-      title: "Cold",
-      url: " https://live.staticflickr.com/65535/53704075105_7d4002f024_b.jpg",
-    },
-    {
-      title: "Fragile",
-      url: "https://live.staticflickr.com/65535/53703642421_1f0fbd96e1_b.jpg",
-    },
-    {
-      title: "Stare",
-      url: "https://live.staticflickr.com/65535/53704189880_85317dc5b3_b.jpg",
-    },
-    {
-      title: "AT-AT",
-      url: "https://live.staticflickr.com/65535/53703858408_ddbbfea3a3_b.jpg",
-    },
-  ];
+  return mockGallery;
 }
 
 export async function getReviews(): Promise<ReviewType[]> {
+  if(process.env.NODE_ENV == "development"){
+    return mockReviews;
+  }
+  
   try {
     const reviewsCollectionRef = collection(db, "reviews");
 
