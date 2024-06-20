@@ -4,7 +4,7 @@ import ProgressProvider from "@/app/ui/common/ProgressbarProvider";
 import { type ReviewType } from "@/app/lib/data.types";
 import Divider from "@/app/ui/common/Divider/Divider";
 
-type ReviewSlideProps = Omit<ReviewType, "id"> & { selected: boolean };
+type ReviewSlideProps = Omit<ReviewType, "id"> & { selected: boolean, focused: boolean };
 
 const ReviewSlide = memo(
   ({
@@ -14,6 +14,7 @@ const ReviewSlide = memo(
     description,
     funFact,
     selected,
+    focused
   }: ReviewSlideProps) => {
     return (
       <div className="review-slide">
@@ -32,7 +33,7 @@ const ReviewSlide = memo(
             <span className="review-slide__score--title">Rating:</span>
             <ProgressProvider
               valueStart={1}
-              valueEnd={Number(selected ? score : 0)}
+              valueEnd={Number(focused && selected ? score : 0)}
               duration={1500}
               delay={150}
             >

@@ -9,7 +9,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-circular-progressbar/dist/styles.css";
 import "./Reviews.scss";
 
-export default function Reviews() {
+export default function Reviews({ focused }: { focused: boolean }) {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [reviews, setReviews] = useState<ReviewType[]>();
 
@@ -80,6 +80,7 @@ export default function Reviews() {
               funFact={review.funFact}
               selected={i === currentSlide}
               key={review.name + i}
+              focused={focused}
             />
           ))}
         </Carousel>

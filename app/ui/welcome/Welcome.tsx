@@ -4,7 +4,7 @@ import CoolArrow from "@/public/icons/arrow.svg";
 
 import { ReactTyped, Typed } from "react-typed";
 
-const Welcome = () => {
+const Welcome = ({ onScrollClick }: { onScrollClick: () => void }) => {
   return (
     <>
       <p className="card__content welcome">
@@ -38,7 +38,7 @@ const Welcome = () => {
           <img src={"/icons/Technologist.webp"} alt="" className="emoji" />
         </picture>
       </p>
-      <div className="card__arrow">
+      <div className="card__arrow" onClick={onScrollClick}>
         <CoolArrow className="card__arrow-img" />
       </div>
     </>

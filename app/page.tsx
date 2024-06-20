@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import useIntersectionObserver from "@/app/lib/utils/hooks/useIntersectionObserver";
+import MainPageSelector from "@/app/ui/MainPageSelector";
 import Welcome from "@/app/ui/Welcome/Welcome";
 import Loading from "./loading";
 import dynamic from "next/dynamic";
@@ -56,11 +57,16 @@ const Page = () => {
 
   return (
     <>
+      <MainPageSelector
+        totalPages={refList.length}
+        currentPage={pageNumber}
+        handlePageChange={handlePageChange}
+      />
       <section className="card card-welcome" ref={welcomeRef}>
-        <Welcome />
+        <Welcome onScrollClick={() => handlePageChange(1)} />
       </section>
       <section className="card card-reviews" ref={reviewsRef}>
-        {wasReviewsVisible && <Reviews />}
+        {wasReviewsVisible && <Reviews focused={isReviewsVisible}/>}
       </section>
       <section className="card card-gallery" ref={galleryRef}>
         {wasGalleryVisible && <Gallery />}
