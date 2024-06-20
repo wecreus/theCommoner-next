@@ -1,4 +1,5 @@
 import DOMPurify from "isomorphic-dompurify";
+// requires jsdom to be installed as dependency even if its not used 🫥
 
 const linkMarkdownParser = (data?: string, className?: string) => {
   if (!data) return "";

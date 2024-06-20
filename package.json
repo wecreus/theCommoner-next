@@ -15,6 +15,7 @@
     "clsx": "^2.1.1",
     "firebase": "^10.12.2",
     "isomorphic-dompurify": "^2.12.0",
+    "jsdom": "^24.1.0",
     "next": "15.0.0-rc.0",
     "react": "19.0.0-rc-fb9a90fa48-20240614",
     "react-circular-progressbar": "^2.1.0",

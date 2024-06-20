@@ -23,6 +23,9 @@ importers:
       isomorphic-dompurify:
         specifier: ^2.12.0
         version: 2.12.0
+      jsdom:
+        specifier: ^24.1.0
+        version: 24.1.0
       next:
         specifier: 15.0.0-rc.0
         version: 15.0.0-rc.0(@babel/core@7.24.7)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)(sass@1.77.5)
