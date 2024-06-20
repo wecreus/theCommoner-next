@@ -1,16 +1,28 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { type ReviewType } from "@/app/lib/data.types";
 import ReviewSlide from "./ReviewSlide";
+import { getReviews } from "@/app/lib/data";
+import Loading from "@/app/loading";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-circular-progressbar/dist/styles.css";
 import "./Reviews.scss";
 
-export default function Reviews({ reviews }: { reviews: ReviewType[] }) {
+export default function Reviews() {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [reviews, setReviews] = useState<ReviewType[]>();
 
-  if (!reviews || reviews.length === 0) return <div>No reviews found</div>;
+  useEffect(() => {
+    const fetchReviews = async () => {
+      const reviews = await getReviews();
+      setReviews(reviews);
+    };
+
+    fetchReviews();
+  }, []);
+
+  if(!reviews) return <Loading />;
 
   return (
     <div className="reviews animate-render">
@@ -20,56 +32,58 @@ export default function Reviews({ reviews }: { reviews: ReviewType[] }) {
           <img src={"/icons/AlienMonster.webp"} alt="" className="emoji" />
         </picture>
       </p>
-      <Carousel
-        showThumbs={false}
-        showStatus={false}
-        className="carousel-reviews"
-        swipeable={false}
-        autoPlay
-        interval={8000}
-        transitionTime={400}
-        useKeyboardArrows
-        stopOnHover
-        selectedItem={currentSlide}
-        onChange={(i) => {
-          // why doesnt react do it on its own???
-          if (i !== currentSlide) {
-            setCurrentSlide(i);
-          }
-        }}
-        renderArrowNext={(onClickHandler) => (
-          <CustomArrow
-            clickHandler={() =>
-              currentSlide + 1 === reviews.length
-                ? setCurrentSlide(0)
-                : onClickHandler()
+      {reviews && (
+        <Carousel
+          showThumbs={false}
+          showStatus={false}
+          className="carousel-reviews"
+          swipeable={false}
+          autoPlay
+          interval={8000}
+          transitionTime={400}
+          useKeyboardArrows
+          stopOnHover
+          selectedItem={currentSlide}
+          onChange={(i) => {
+            // why doesnt react do it on its own???
+            if (i !== currentSlide) {
+              setCurrentSlide(i);
             }
-            direction={"next"}
-          />
-        )}
-        renderArrowPrev={(onClickHandler) => (
-          <CustomArrow
-            clickHandler={() =>
-              currentSlide === 0
-                ? setCurrentSlide(reviews.length - 1)
-                : onClickHandler()
-            }
-            direction={"prev"}
-          />
-        )}
-      >
-        {reviews?.map((review, i) => (
-          <ReviewSlide
-            coverUrl={review.coverUrl}
-            name={review.name}
-            score={review.score}
-            description={review.description}
-            funFact={review.funFact}
-            selected={i === currentSlide}
-            key={review.name + i}
-          />
-        ))}
-      </Carousel>
+          }}
+          renderArrowNext={(onClickHandler) => (
+            <CustomArrow
+              clickHandler={() =>
+                currentSlide + 1 === reviews.length
+                  ? setCurrentSlide(0)
+                  : onClickHandler()
+              }
+              direction={"next"}
+            />
+          )}
+          renderArrowPrev={(onClickHandler) => (
+            <CustomArrow
+              clickHandler={() =>
+                currentSlide === 0
+                  ? setCurrentSlide(reviews.length - 1)
+                  : onClickHandler()
+              }
+              direction={"prev"}
+            />
+          )}
+        >
+          {reviews?.map((review, i) => (
+            <ReviewSlide
+              coverUrl={review.coverUrl}
+              name={review.name}
+              score={review.score}
+              description={review.description}
+              funFact={review.funFact}
+              selected={i === currentSlide}
+              key={review.name + i}
+            />
+          ))}
+        </Carousel>
+      )}
     </div>
   );
 }

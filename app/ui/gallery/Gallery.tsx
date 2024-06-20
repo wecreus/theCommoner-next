@@ -2,17 +2,30 @@
 
 import "./Gallery.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { type GalleryType } from "@/app/lib/data.types";
+import { getGallery } from "@/app/lib/data";
 import SocialIcon from "@/app/ui/common/SocialIcon/SocialIcon";
 import Flickr from "@/public/icons/flickr.svg";
 import Instagram from "@/public/icons/instagram.svg";
 import Xcom from "@/public/icons/Xcom.svg";
+import Loading from "@/app/loading";
 
-const Gallery = memo(({gallery}: {gallery: GalleryType[]}) => {
-  if(!gallery || gallery.length === 0) return <div>No gallery pictures found</div>;
+
+const Gallery = memo(() => {
+  const [gallery, setGallery] = useState<GalleryType[]>();
+
+  useEffect(() => {
+    const fetchGallery = async () => {
+      const result = await getGallery();
+      setGallery(result);
+    };
+
+    fetchGallery();
+  }, []);
+
+  if(!gallery) return <Loading />;
   
   return (
     <div className="card__content card__gallery animate-render">

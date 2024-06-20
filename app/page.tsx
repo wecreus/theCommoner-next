@@ -1,9 +1,6 @@
 import Welcome from "@/app/ui/Welcome/Welcome";
-// import Gallery from "@/app/ui/Gallery/Gallery";
-// import Reviews from "@/app/ui/Reviews/Reviews";
 import Loading from "./loading";
-import { getReviews } from "@/app/lib/data";
-import { GalleryPictures } from "@/app/lib/data";
+
 import dynamic from "next/dynamic";
 import "./Home.scss";
 
@@ -19,20 +16,19 @@ const Map = dynamic(() => import("@/app/ui/Map/Map"), {
   loading: () => <Loading />,
 });
 
-const Home = async () => {
-  const reviews = await getReviews();
+const Page = async () => {
+  
 
   return (
     <>
       <section className="card card-welcome">
         <Welcome />
       </section>
-
       <section className="card card-reviews">
-        <Reviews reviews={reviews} />
+        <Reviews  />
       </section>
       <section className="card card-gallery">
-        <Gallery gallery={GalleryPictures} />
+        <Gallery />
       </section>
       <section className="card card-map">
         <Map />
@@ -46,4 +42,6 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default Page;
+
+export const revalidate = false;
