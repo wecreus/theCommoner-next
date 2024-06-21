@@ -1,7 +1,7 @@
 import "./Contact.scss";
-// import FormSidebar from "./FormSidebar/FormSidebar";
-// import { memo } from "react";
+import FormSidebar from "@/app/ui/FormSiderbar/FormSidebar";
 
+// TODO: update links across the website
 const ContactMe = () => {
   // const onSubmit = (e) => {
   //   e.preventDefault();
@@ -70,7 +70,7 @@ const ContactMe = () => {
             className="Form-content__submit"
           />
         </div>
-        {/* <FormSidebar /> */}
+        <FormSidebar />
       </form>
     </section>
   );
