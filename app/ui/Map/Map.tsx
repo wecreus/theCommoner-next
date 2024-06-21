@@ -5,7 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import Globe from "./Globe";
 import { Environment } from "@react-three/drei";
 import GlobeData from "@/public/data/countries.json";
-// import Camera from "./components/Camera";
+import Camera from "./Camera";
 
 import "./Map.scss";
 
@@ -20,7 +20,7 @@ const Map = () => {
       <Canvas shadows camera={{ fov: 50, position: [55.12, 87.91, 95.46] }} gl={{antialias: true}}>
         <Globe />
         <Environment preset={"dawn"} />
-        {/* <Camera /> */}
+        <Camera />
       </Canvas>
     </div>
     /* eslint-enable react/no-unknown-property  */

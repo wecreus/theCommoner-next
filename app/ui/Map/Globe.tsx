@@ -1,40 +1,59 @@
 import { useRef, useLayoutEffect, useMemo } from "react";
 // import { GlobeData } from "@/common/utils";
-import ReactThreeFiber, { extend, useThree } from "@react-three/fiber";
-import { MeshStandardMaterial } from "three";
+import { extend, useThree } from "@react-three/fiber";
+import { MeshStandardMaterial, type Camera } from "three";
 import ThreeGlobe from "three-globe";
 import GlobeData from "@/public/data/countries.json";
+
 // import createCountryMaterial from "../helpers/createCountryMaterial";
 // import PopupHTML from "./PopupHTML";
 // import Heart from "./Heart";
 
-
 extend({ ThreeGlobe });
 
+export interface FeaturesEntity {
+  type?: string;
+  properties?: { ADMIN: string };
+  geometry?: {
+    type: string;
+    coordinates?: (((number | number[] | null)[] | null)[] | null)[] | null;
+  };
+}
 
-declare module '@react-three/fiber' {
+// setPosition is a method from CameraControls. cant figure out how to tell typescript that
+type CameraImpl = Camera & {
+  setPosition?: (
+    positionX: number,
+    positionY: number,
+    positionZ: number,
+    enableTransition?: boolean
+  ) => void;
+};
+
+declare module "@react-three/fiber" {
   interface ThreeElements {
-    // @ts-ignore
-    threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe> 
+    // @ts-ignore Object3DNode doesnt exist in this version of react-three-fiber
+    threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>;
   }
 }
 
-
 // TODO: add clouds from drei
 const Globe = () => {
-  const globeRef = useRef(null);
-  const controls = useThree((state) => state.controls)
-  
+  const globeRef = useRef<ThreeGlobe>(null);
+  const camera = useThree<CameraImpl>((state) => state.camera);
+
   const pointCameraToUkraine = () => {
-    controls?.setPosition(46.98, 74.09, 80.15, true);
+    if (camera.setPosition) {
+      camera.setPosition(46.98, 74.09, 80.15, true);
+    }
   };
 
   // React or R3F will think that args change even if they do not and rerender ThreeGlobe
   // godda do it this way
-  const globeArgs = useMemo(() => [{ animateIn: false}], []);
+  const globeArgs = useMemo(() => [{ animateIn: false }], []);
 
   useLayoutEffect(() => {
-    if(!globeRef.current) {
+    if (!globeRef.current) {
       return;
     }
     const globeMaterial = new MeshStandardMaterial({
@@ -48,20 +67,20 @@ const Globe = () => {
       .globeMaterial(globeMaterial)
       .polygonsData(GlobeData.features)
       .atmosphereAltitude(0.05);
-    
+
     globeRef.current.position.y = -25;
 
     // polygons
     globeRef.current
       .polygonsTransitionDuration(200)
-      .polygonSideColor((d) =>
-        d.properties.ADMIN === "Ukraine" ? "#00000055" : "#00000000"
-      )
-      .polygonStrokeColor((d) =>
-        d.properties.ADMIN === "Ukraine" ? "#2b2b2b" : "#575757ff"
-      )
-      .polygonAltitude((d) =>
-        d.properties.ADMIN === "Ukraine" ? 0.015 : 0.008
+      .polygonSideColor((d: {} & FeaturesEntity) => {
+        return d.properties?.ADMIN === "Ukraine" ? "#00000055" : "#00000000";
+      })
+      .polygonStrokeColor((d: {} & FeaturesEntity) => {
+        return d.properties?.ADMIN === "Ukraine" ? "#2b2b2b" : "#575757ff";
+      })
+      .polygonAltitude((d: {} & FeaturesEntity) =>
+        d.properties?.ADMIN === "Ukraine" ? 0.015 : 0.008
       );
   }, []);
 
