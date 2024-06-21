@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
-import { type ReviewType } from "@/app/lib/data.types";
+import { type ReviewType } from "@/app/lib/definitions";
 import ReviewSlide from "./ReviewSlide";
 import { getReviews } from "@/app/lib/data";
 import Loading from "@/app/loading";

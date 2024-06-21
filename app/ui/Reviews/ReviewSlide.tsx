@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import ProgressProvider from "@/app/ui/common/ProgressbarProvider";
-import { type ReviewType } from "@/app/lib/data.types";
+import { type ReviewType } from "@/app/lib/definitions";
 import Divider from "@/app/ui/common/Divider/Divider";
 
 type ReviewSlideProps = Omit<ReviewType, "id"> & { selected: boolean, focused: boolean };
