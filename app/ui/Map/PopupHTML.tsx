@@ -11,7 +11,7 @@ const PopupHTML = ({ handleClick }: { handleClick: () => void }) => {
   const isInRange = useAppSelector((store) => store.globe.isInRange);
 
   const redirectHandler = () => {
-    router.push("/contact");
+    router.push("/contact", { scroll: false });
     dispatch(
       updateIsInRange({
         isInRange: false,

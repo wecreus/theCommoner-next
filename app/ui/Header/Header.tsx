@@ -17,7 +17,7 @@ const Header = () => {
     if (location.pathname === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      router.push("/");
+      router.push("/", { scroll: false });
     }
   };
 
