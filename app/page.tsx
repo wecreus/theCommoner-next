@@ -17,6 +17,7 @@ const Reviews = dynamic(() => import("@/app/ui/Reviews/Reviews"), {
 
 const Map = dynamic(() => import("@/app/ui/Map/Map"), {
   loading: () => <Loading />,
+  ssr: false,
 });
 
 // TODO: bug in build with how Reviews and Gallery uses server actions
