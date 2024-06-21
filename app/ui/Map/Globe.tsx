@@ -2,23 +2,15 @@ import { useRef, useLayoutEffect, useMemo } from "react";
 // import { GlobeData } from "@/common/utils";
 import { extend, useThree } from "@react-three/fiber";
 import { MeshStandardMaterial, type Camera } from "three";
+import { type FeaturesEntityType } from "@/app/lib/definitions";
 import ThreeGlobe from "three-globe";
 import GlobeData from "@/public/data/countries.json";
+import createCountryMaterial from "@/app/lib/utils/createCountryMaterial";
 
-// import createCountryMaterial from "../helpers/createCountryMaterial";
 // import PopupHTML from "./PopupHTML";
 // import Heart from "./Heart";
 
 extend({ ThreeGlobe });
-
-export interface FeaturesEntity {
-  type?: string;
-  properties?: { ADMIN: string };
-  geometry?: {
-    type: string;
-    coordinates?: (((number | number[] | null)[] | null)[] | null)[] | null;
-  };
-}
 
 // setPosition is a method from CameraControls. cant figure out how to tell typescript that
 type CameraImpl = Camera & {
@@ -72,14 +64,15 @@ const Globe = () => {
 
     // polygons
     globeRef.current
+      .polygonCapMaterial(createCountryMaterial)
       .polygonsTransitionDuration(200)
-      .polygonSideColor((d: {} & FeaturesEntity) => {
+      .polygonSideColor((d: FeaturesEntityType) => {
         return d.properties?.ADMIN === "Ukraine" ? "#00000055" : "#00000000";
       })
-      .polygonStrokeColor((d: {} & FeaturesEntity) => {
+      .polygonStrokeColor((d: FeaturesEntityType) => {
         return d.properties?.ADMIN === "Ukraine" ? "#2b2b2b" : "#575757ff";
       })
-      .polygonAltitude((d: {} & FeaturesEntity) =>
+      .polygonAltitude((d: FeaturesEntityType) =>
         d.properties?.ADMIN === "Ukraine" ? 0.015 : 0.008
       );
   }, []);

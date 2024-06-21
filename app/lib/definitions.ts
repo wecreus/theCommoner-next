@@ -16,3 +16,11 @@ export type ReviewType = {
   /* Score */
   score: string;
 }
+export interface FeaturesEntityType {
+  type?: string;
+  properties?: { ADMIN: string };
+  geometry?: {
+    type: string;
+    coordinates?: (((number | number[] | null)[] | null)[] | null)[] | null;
+  };
+}
