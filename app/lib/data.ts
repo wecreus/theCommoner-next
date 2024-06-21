@@ -6,6 +6,8 @@ import { type GalleryType, ReviewType } from "./data.types";
 import { mockGallery, mockReviews } from "./mocks";
 
 // TODO: add revalidate
+// currently after serving a component to the client, component THEN sends a request for the data. 
+// so basically make the component already filled with data
 export async function getGallery(): Promise<GalleryType[]> {
   return mockGallery;
 }
