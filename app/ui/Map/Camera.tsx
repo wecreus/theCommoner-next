@@ -45,7 +45,7 @@ const Camera = () => {
       maxPolarAngle={Math.PI / 3.5}
       minPolarAngle={Math.PI / 3.5}
       dollySpeed={0.5}
-      truck={false}
+      truckSpeed={0}
       makeDefault
     />
   );
