@@ -8,7 +8,7 @@ import createCountryMaterial from "@/app/lib/utils/createCountryMaterial";
 import Heart from "./Heart";
 import { type CameraControls } from "@react-three/drei";
 
-// import PopupHTML from "./PopupHTML";
+import PopupHTML from "./PopupHTML";
 // import Heart from "./Heart";
 
 extend({ ThreeGlobe });
@@ -67,15 +67,13 @@ const Globe = () => {
       );
   }, []);
 
-  /* eslint-disable react/no-unknown-property  */
   return (
     <>
       <Heart handleClick={pointCameraToUkraine} />
-      {/* <PopupHTML handleClick={pointCameraToUkraine}/> */}
+      <PopupHTML handleClick={pointCameraToUkraine}/>
       <threeGlobe args={globeArgs} ref={globeRef} />
     </>
   );
-  /* eslint-enable react/no-unknown-property  */
 };
 
 export default Globe;
