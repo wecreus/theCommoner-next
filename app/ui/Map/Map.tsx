@@ -4,7 +4,6 @@
 import { Canvas } from "@react-three/fiber";
 import Globe from "./Globe";
 import { Environment } from "@react-three/drei";
-import GlobeData from "@/public/data/countries.json";
 import Camera from "./Camera";
 
 import "./Map.scss";

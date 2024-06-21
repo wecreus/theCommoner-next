@@ -1,30 +1,21 @@
 import { useRef, useLayoutEffect, useMemo } from "react";
-// import { GlobeData } from "@/common/utils";
 import { extend, useThree } from "@react-three/fiber";
-import { MeshStandardMaterial, type Camera } from "three";
+import { MeshStandardMaterial } from "three";
 import { type FeaturesEntityType } from "@/app/lib/definitions";
 import ThreeGlobe from "three-globe";
 import GlobeData from "@/public/data/countries.json";
 import createCountryMaterial from "@/app/lib/utils/createCountryMaterial";
+import Heart from "./Heart";
+import { type CameraControls } from "@react-three/drei";
 
 // import PopupHTML from "./PopupHTML";
 // import Heart from "./Heart";
 
 extend({ ThreeGlobe });
 
-// setPosition is a method from CameraControls. cant figure out how to tell typescript that
-type CameraImpl = Camera & {
-  setPosition?: (
-    positionX: number,
-    positionY: number,
-    positionZ: number,
-    enableTransition?: boolean
-  ) => void;
-};
-
 declare module "@react-three/fiber" {
   interface ThreeElements {
-    // @ts-ignore Object3DNode doesnt exist in this version of react-three-fiber
+    // @ts-ignore Object3DNode doesn't exist in this version of react-three-fiber
     threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>;
   }
 }
@@ -32,12 +23,11 @@ declare module "@react-three/fiber" {
 // TODO: add clouds from drei
 const Globe = () => {
   const globeRef = useRef<ThreeGlobe>(null);
-  const camera = useThree<CameraImpl>((state) => state.camera);
+  // forcing camera to be of type CameraControls no matter what
+  const controls = useThree((state) => state.controls) as unknown as CameraControls;
 
   const pointCameraToUkraine = () => {
-    if (camera.setPosition) {
-      camera.setPosition(46.98, 74.09, 80.15, true);
-    }
+    controls.setPosition(46.98, 74.09, 80.15, true);
   };
 
   // React or R3F will think that args change even if they do not and rerender ThreeGlobe
@@ -80,8 +70,8 @@ const Globe = () => {
   /* eslint-disable react/no-unknown-property  */
   return (
     <>
-      {/* <Heart handleClick={pointCameraToUkraine}/>
-      <PopupHTML handleClick={pointCameraToUkraine}/> */}
+      <Heart handleClick={pointCameraToUkraine} />
+      {/* <PopupHTML handleClick={pointCameraToUkraine}/> */}
       <threeGlobe args={globeArgs} ref={globeRef} />
     </>
   );
