@@ -4,7 +4,7 @@ import "./Gallery.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { memo, useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
-import { type GalleryType } from "@/app/lib/data.types";
+import { type GalleryType } from "@/app/lib/definitions";
 import { getGallery } from "@/app/lib/data";
 import SocialIcon from "@/app/ui/common/SocialIcon/SocialIcon";
 import Flickr from "@/public/icons/flickr.svg";

@@ -2,7 +2,7 @@
 import db from "@/app/lib/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import linkMarkdownParser from "@/app/lib/utils/linkMarkdownParser";
-import { type GalleryType, ReviewType } from "./data.types";
+import { type GalleryType, ReviewType } from "./definitions";
 import { mockGallery, mockReviews } from "./mocks";
 
 // TODO: add revalidate
