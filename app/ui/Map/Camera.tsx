@@ -1,31 +1,31 @@
 import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import { CameraControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-// import { useDispatch } from "react-redux";
-// import { updateIsInRange } from "@/slices/globeReducer";
+import { useAppDispatch } from "@/app/lib/store/hooks";
+import { updateIsInRange } from "@/app/lib/store/globe/globeSlice";
 
 // TODO: rotate camera to interesting point when idle
 const Camera = () => {
-  // const dispatch = useDispatch();
-  const cameraControlsRef = useRef<CameraControls>(null);
+  const dispatch = useAppDispatch();
+  const cameraControlsRef = useRef<CameraControls>(null!);
   const [isInRange, setIsInRange] = useState(false);
 
-  // useFrame(({ camera }) => {
-  //   setIsInRange(
-  //     camera.rotation.z > 0.2 &&
-  //       camera.rotation.z < 0.6 &&
-  //       cameraControlsRef.current.distance < 150 &&
-  //       cameraControlsRef.current.distance > 105
-  //   );
-  // });
+  useFrame(({ camera }) => {
+    setIsInRange(
+      camera.rotation.z > 0.2 &&
+        camera.rotation.z < 0.6 &&
+        cameraControlsRef.current.distance < 150 &&
+        cameraControlsRef.current.distance > 105
+    );
+  });
 
-  // useEffect(() => {
-  //   dispatch(
-  //     updateIsInRange({
-  //       isInRange: isInRange,
-  //     })
-  //   );
-  // }, [isInRange, dispatch]);
+  useEffect(() => {
+    dispatch(
+      updateIsInRange({
+        isInRange: isInRange,
+      })
+    );
+  }, [isInRange, dispatch]);
 
   useLayoutEffect(() => {
      cameraControlsRef.current?.setLookAt( 42.56, 487, 601, 0, 0, 0);

@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import themeReducer from "./theme/themeSlice";
+import globeReducer from "./globe/globeSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       theme: themeReducer,
+      globe: globeReducer
     },
   });
 };
