@@ -6,10 +6,8 @@ import ThreeGlobe from "three-globe";
 import GlobeData from "@/public/data/countries.json";
 import createCountryMaterial from "@/app/lib/utils/createCountryMaterial";
 import Heart from "./Heart";
-import { type CameraControls } from "@react-three/drei";
-
 import PopupHTML from "./PopupHTML";
-// import Heart from "./Heart";
+import { type CameraControls } from "@react-three/drei";
 
 extend({ ThreeGlobe });
 

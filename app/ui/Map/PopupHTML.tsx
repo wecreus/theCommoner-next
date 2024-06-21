@@ -20,7 +20,6 @@ const PopupHTML = ({ handleClick }: { handleClick: () => void }) => {
   };
 
   const handleOutsideClick = (e: React.MouseEvent<HTMLElement>) => {
-    console.log(e.target);
     if (e.target === outsideRef.current) {
       handleClick();
     }
