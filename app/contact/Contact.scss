@@ -13,7 +13,7 @@
     box-sizing: border-box;
     border-radius: 25px;
     display: flex;
-    background-color: $background;
+    background: linear-gradient(45deg, $background 20%, color-mix(in srgb, $background 95%, rgb(255, 255, 255)) 100%);
 
     @include toTabletScreen {
       flex-direction: column-reverse;
@@ -154,12 +154,12 @@
   }
 }
 
-
 @keyframes formPopIn {
   0% {
     transform: translateY(150%);
   }
-  10%, 90% {
+  10%,
+  90% {
     transform: translateY(0);
   }
   100% {
