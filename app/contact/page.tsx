@@ -1,31 +1,24 @@
-import "./Contact.scss";
-import FormSidebar from "@/app/ui/FormSiderbar/FormSidebar";
-import type { Metadata } from "next";
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Contact',
-};
+import "./Contact.scss";
+import { useActionState } from 'react';
+import FormSidebar from "@/app/ui/FormSiderbar/FormSidebar";
+import { sendEmail } from "@/app/lib/actions";
 
 // TODO: update links across the website
+
+// TODO: validate with zod the minLength and display custom error
 const ContactMe = () => {
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  //   const mailName = String(e.target["mail-name"].value) || "";
-  //   const mailCompany = String(e.target["mail-company"].value) || "";
-  //   const mailMessage = String(e.target["mail-message"].value) || "";
-  //   const subject = `${mailName}${mailCompany ? " from " + mailCompany : ""}`;
+  const initialState = { message: "", errors: {} };
 
-  //   const result = `mailto:wecreus@gmail.com?subject=${subject}&body=${mailMessage}`;
-  //   window.open(result);
-  // };
+  const [state, dispatch] = useActionState(sendEmail, initialState);
 
+  console.log(state.errors);
   return (
     <section className="section Contact">
       <form
         className="Form"
-        // onSubmit={onSubmit}
-        method="post"
-        encType="text/plain"
+        action={dispatch}
       >
         <div className="Form-content">
           <div className="Form-content__group">
@@ -39,9 +32,12 @@ const ContactMe = () => {
             </label>
             <input
               id="mail-name"
+              name="mail-name"
               className="Form-content__input Form-content__input--name"
               required
               placeholder="Your name"
+              type="text"
+              minLength={2}
               autoComplete="off"
             />
           </div>
@@ -51,6 +47,8 @@ const ContactMe = () => {
             </label>
             <input
               id="mail-company"
+              type="text"
+              name="mail-company"
               className="Form-content__input Form-content__input--company"
               placeholder="Company"
               autoComplete="off"
@@ -62,13 +60,16 @@ const ContactMe = () => {
             </label>
             <textarea
               id="mail-message"
+              name="mail-message"
               className="Form-content__input Form-content__input--message"
               placeholder="Your message..."
+              minLength={5}
               required
               rows={6}
               autoComplete="off"
             />
           </div>
+          {state.message}
           <input
             type="submit"
             value={"Send email"}

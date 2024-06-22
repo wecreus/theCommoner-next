@@ -32,8 +32,10 @@
     "react-responsive-carousel": "^3.2.23",
     "react-spinners": "^0.13.8",
     "react-typed": "^2.0.12",
+    "resend": "^3.3.0",
     "three": "^0.165.0",
-    "three-globe": "^2.31.0"
+    "three-globe": "^2.31.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
