@@ -4,6 +4,8 @@ import Header from "@/app/ui/Header/Header";
 import StoreProvider from "./StoreProvider";
 import ThemeProvider from "./ui/ThemeProvider";
 import GradientSVG from "./ui/common/GradientSVG";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "@/styles/globals.scss";
 
 // https://stackoverflow.com/questions/78636740/how-to-specify-font-slant-slnt-when-using-nextjs
@@ -49,6 +51,8 @@ export default function RootLayout({
               rotation={"0"}
             />
           </ThemeProvider>
+          <Analytics />
+          <SpeedInsights />
         </body>
       </html>
     </StoreProvider>
