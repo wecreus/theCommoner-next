@@ -4,21 +4,19 @@ import "./Contact.scss";
 import { useActionState, useEffect, useState, useRef } from "react";
 import FormSidebar from "@/app/ui/FormSiderbar/FormSidebar";
 import { sendEmail } from "@/app/lib/actions";
+import type { EmailState } from "@/app/lib/definitions";
 import clsx from "clsx";
 
 // TODO: update links across the website
-
-// TODO: validate with zod the minLength and display custom error
-
 const initialState = { message: "", errors: {} };
 const ContactMe = () => {
   
   const [messageShown, setMessageShown] = useState(true);
-  const [state, dispatch] = useActionState(sendEmail, initialState);
+  const [state, dispatch]: [EmailState, (payload: FormData) => void, boolean] = useActionState(sendEmail, initialState);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   
   useEffect(() => {
-    if(!!Object.keys(state.message).length) {
+    if(state.message) {
       setMessageShown(true);
 
       if(timer.current) {
@@ -51,8 +49,11 @@ const ContactMe = () => {
             <input
               id="mail-name"
               name="mail-name"
-              className="Form-content__input Form-content__input--name"
+              className={clsx("Form-content__input Form-content__input--name", {
+                "Form-content__input--error": messageShown && state.errors?.name,
+              })}
               required
+              minLength={2}
               placeholder="Your name"
               type="text"
             />
@@ -65,7 +66,9 @@ const ContactMe = () => {
               id="mail-email"
               type="email"
               name="mail-email"
-              className="Form-content__input Form-content__input--email"
+              className={clsx("Form-content__input Form-content__input--email", {
+                "Form-content__input--error": messageShown && state.errors?.email,
+              })}
               placeholder="Your email address"
             />
           </div>
@@ -77,7 +80,9 @@ const ContactMe = () => {
               id="mail-company"
               type="text"
               name="mail-company"
-              className="Form-content__input Form-content__input--company"
+              className={clsx("Form-content__input Form-content__input--company", {
+                "Form-content__input--error": messageShown && state.errors?.company,
+              })}
               placeholder="Company you are from"
               autoComplete="off"
             />
@@ -89,7 +94,9 @@ const ContactMe = () => {
             <textarea
               id="mail-message"
               name="mail-message"
-              className="Form-content__input Form-content__input--message"
+              className={clsx("Form-content__input Form-content__input--message", {
+                "Form-content__input--error": messageShown && state.errors?.mailMessage,
+              })}
               placeholder="Your message..."
               minLength={5}
               required
@@ -99,9 +106,9 @@ const ContactMe = () => {
           </div>
           <div className="Form-content__group Form-content__group--submit">
             <div className={clsx('Form-message', {
-              'Form-message--error': Object.keys(state.errors).length,
+              'Form-message--error': Object.keys(state.errors || {}).length,
             })} aria-live="polite" aria-atomic="true">
-              {!!state.message && messageShown && <span>{state.message}</span>}
+              {state.message && messageShown && <span>{state.message}</span>}
             </div>
             <input
               type="submit"

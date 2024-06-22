@@ -2,6 +2,7 @@
 import { z } from "zod";
 import { Resend } from "resend";
 import { EmailTemplate } from "@/app/ui/EmailTemplate";
+import { EmailState } from "./definitions";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -19,17 +20,7 @@ const FormSchema = z.object({
   ]),
 });
 
-export type State = {
-  errors?: {
-    name?: string;
-    company?: string;
-    message?: string;
-    email?: string;
-  };
-  message?: string | null;
-};
-
-export async function sendEmail(prevState: State, formData: FormData) {
+export async function sendEmail(prevState: EmailState, formData: FormData) {
 
   // Validate form using Zod
   const formFields = {

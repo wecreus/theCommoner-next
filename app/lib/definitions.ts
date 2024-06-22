@@ -24,3 +24,14 @@ export interface FeaturesEntityType {
     coordinates?: (((number | number[] | null)[] | null)[] | null)[] | null;
   };
 }
+
+export type EmailState = {
+  errors?: {
+    name?: string;
+    company?: string;
+    mailMessage?: string;
+    email?: string;
+    status?: string;
+  };
+  message?: string;
+};
