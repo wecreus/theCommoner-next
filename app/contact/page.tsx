@@ -1,25 +1,43 @@
-'use client';
+"use client";
 
 import "./Contact.scss";
-import { useActionState } from 'react';
+import { useActionState, useEffect, useState, useRef } from "react";
 import FormSidebar from "@/app/ui/FormSiderbar/FormSidebar";
 import { sendEmail } from "@/app/lib/actions";
+import clsx from "clsx";
 
 // TODO: update links across the website
 
 // TODO: validate with zod the minLength and display custom error
+
+const initialState = { message: "", errors: {} };
 const ContactMe = () => {
-  const initialState = { message: "", errors: {} };
-
+  
+  const [messageShown, setMessageShown] = useState(true);
   const [state, dispatch] = useActionState(sendEmail, initialState);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  
+  useEffect(() => {
+    if(!!Object.keys(state.message)) {
+      setMessageShown(true);
 
-  console.log(state.errors);
+      if(timer.current) {
+        clearTimeout(timer.current);
+      }
+
+      timer.current = setTimeout(() => {
+        setMessageShown(false);
+      }, 3000);
+    }
+  
+    return () => {
+      timer.current && clearTimeout(timer.current)
+    };
+  }, [state]);
+
   return (
     <section className="section Contact">
-      <form
-        className="Form"
-        action={dispatch}
-      >
+      <form className="Form" action={dispatch}>
         <div className="Form-content">
           <div className="Form-content__group">
             <span className="Form-content__title">
@@ -37,7 +55,7 @@ const ContactMe = () => {
               required
               placeholder="Your name"
               type="text"
-              minLength={2}
+              
               autoComplete="off"
             />
           </div>
@@ -69,18 +87,23 @@ const ContactMe = () => {
               autoComplete="off"
             />
           </div>
-          {state.message}
-          <input
-            type="submit"
-            value={"Send email"}
-            className="Form-content__submit"
-          />
+          <div className="Form-content__group Form-content__group--submit">
+            <div className={clsx('Form-message', {
+              'Form-message--error': Object.keys(state.errors).length,
+            })} aria-live="polite" aria-atomic="true">
+              {!!state.message && messageShown && <span>{state.message}</span>}
+            </div>
+            <input
+              type="submit"
+              value={"Send email"}
+              className="Form-content__submit"
+            />
+          </div>
         </div>
         <FormSidebar />
       </form>
     </section>
   );
 };
-
 
 export default ContactMe;

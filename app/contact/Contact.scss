@@ -24,6 +24,35 @@
       font-size: 90%;
     }
 
+    &-message {
+      // color: #18b213;
+      color: white;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 80%;
+      display: flex;
+      align-items: center;
+      font-weight: 800;
+      font-variation-settings: "slnt" -8;
+      text-shadow: 3px 1px 5px #36c9319a;
+      padding-right: 10px;
+
+      @include toPhoneScreen {
+        font-size: 70%;
+      }
+
+      &--error {
+        text-shadow: 3px 1px 5px #ff3333a2;
+      }
+
+      & > span {
+        vertical-align: middle;
+
+        animation: formPopIn 3000ms normal forwards ease-in-out;
+      }
+    }
+
     &-content {
       flex: 1 1 0;
       padding: 25px;
@@ -39,6 +68,15 @@
       &__group {
         display: flex;
         flex-direction: column;
+
+        &--submit {
+          flex-direction: row;
+          justify-content: space-between;
+
+          @include toPhoneScreen {
+            font-size: 80%;
+          }
+        }
       }
 
       &__label {
@@ -71,6 +109,10 @@
         border: 1px solid rgb(124, 124, 124);
         align-self: flex-end;
         margin-top: auto;
+
+        @include toPhoneScreen {
+          padding: 6px 18px;
+        }
 
         &:hover {
           background-position: 40% center;
@@ -109,5 +151,18 @@
         }
       }
     }
+  }
+}
+
+
+@keyframes formPopIn {
+  0% {
+    transform: translateY(150%);
+  }
+  10%, 90% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(150%);
   }
 }
