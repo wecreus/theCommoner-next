@@ -55,8 +55,18 @@ const ContactMe = () => {
               required
               placeholder="Your name"
               type="text"
-              
-              autoComplete="off"
+            />
+          </div>
+          <div className="Form-content__group">
+            <label htmlFor="mail-email" className="Form-content__label">
+              Email
+            </label>
+            <input
+              id="mail-email"
+              type="email"
+              name="mail-email"
+              className="Form-content__input Form-content__input--email"
+              placeholder="Your email address"
             />
           </div>
           <div className="Form-content__group">
@@ -68,7 +78,7 @@ const ContactMe = () => {
               type="text"
               name="mail-company"
               className="Form-content__input Form-content__input--company"
-              placeholder="Company"
+              placeholder="Company you are from"
               autoComplete="off"
             />
           </div>
@@ -83,7 +93,7 @@ const ContactMe = () => {
               placeholder="Your message..."
               minLength={5}
               required
-              rows={6}
+              rows={4}
               autoComplete="off"
             />
           </div>

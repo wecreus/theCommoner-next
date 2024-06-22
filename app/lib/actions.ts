@@ -11,6 +11,10 @@ const FormSchema = z.object({
   mailMessage: z.string().min(5, {
     message: "Please enter at least 5 characters",
   }),
+  email: z.union([
+    z.literal(""),
+    z.string().email({ message: "Invalid email" }),
+  ]),
 });
 
 export type State = {
@@ -18,17 +22,18 @@ export type State = {
     name?: string;
     company?: string;
     message?: string;
+    email?: string;
   };
   message?: string | null;
 };
 
 export async function sendEmail(prevState: State, formData: FormData) {
-
   // Validate form using Zod
   const validatedFields = FormSchema.safeParse({
     name: formData.get("mail-name"),
     company: formData.get("mail-company"),
     mailMessage: formData.get("mail-message"),
+    email: formData.get("mail-email"),
   });
 
   // If form validation fails, return errors early. Otherwise, continue.
@@ -39,7 +44,7 @@ export async function sendEmail(prevState: State, formData: FormData) {
     };
   }
 
-    //   const mailName = String(e.target["mail-name"].value) || "";
+  //   const mailName = String(e.target["mail-name"].value) || "";
   //   const mailCompany = String(e.target["mail-company"].value) || "";
   //   const mailMessage = String(e.target["mail-message"].value) || "";
   //   const subject = `${mailName}${mailCompany ? " from " + mailCompany : ""}`;
