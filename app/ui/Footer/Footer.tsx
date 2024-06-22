@@ -17,7 +17,7 @@ const Footer = () => {
         className="Footer__item"
         target={"_blank"}
         rel="noopener noreferrer"
-        href="https://github.com/wecreus/theCommoner"
+        href="https://github.com/wecreus/theCommoner-next"
       >
         <CommonerWhite className="Footer__item--logo"  />
         theCommoner

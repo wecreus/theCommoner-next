@@ -13,7 +13,7 @@ import "@/styles/globals.scss";
 // const inter = localFont({ src: "../fonts/Inter.woff2" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://commoner.vercel.app/"),
+  metadataBase: new URL("https://thecommoner-next.vercel.app/"),
   title: {
     template: '%s | theCommoner',
     default: 'theCommoner',
