@@ -131,6 +131,10 @@
         transition: all 200ms ease;
         font-family: Inter, system-ui;
 
+        &--error {
+          border: 1px solid #ff3333;
+        }
+
         &::placeholder {
           opacity: 0.2;
           font-family: Inter, system-ui;
