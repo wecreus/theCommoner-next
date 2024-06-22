@@ -18,7 +18,7 @@ const ContactMe = () => {
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   
   useEffect(() => {
-    if(!!Object.keys(state.message)) {
+    if(!!Object.keys(state.message).length) {
       setMessageShown(true);
 
       if(timer.current) {
