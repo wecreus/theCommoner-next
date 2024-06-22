@@ -1,7 +1,9 @@
 "use server";
-import { revalidatePath } from "next/cache";
 import { z } from "zod";
-import { redirect } from "next/navigation";
+import { Resend } from "resend";
+import { EmailTemplate } from "@/app/ui/EmailTemplate";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const FormSchema = z.object({
   name: z.string().min(2, {
@@ -28,13 +30,15 @@ export type State = {
 };
 
 export async function sendEmail(prevState: State, formData: FormData) {
+
   // Validate form using Zod
-  const validatedFields = FormSchema.safeParse({
-    name: formData.get("mail-name"),
-    company: formData.get("mail-company"),
-    mailMessage: formData.get("mail-message"),
-    email: formData.get("mail-email"),
-  });
+  const formFields = {
+    name: String(formData.get("mail-name")),
+    company: String(formData.get("mail-company")),
+    mailMessage: String(formData.get("mail-message")),
+    email: String(formData.get("mail-email")),
+  };
+  const validatedFields = FormSchema.safeParse(formFields);
 
   // If form validation fails, return errors early. Otherwise, continue.
   if (!validatedFields.success) {
@@ -44,29 +48,26 @@ export async function sendEmail(prevState: State, formData: FormData) {
     };
   }
 
-  //   const mailName = String(e.target["mail-name"].value) || "";
-  //   const mailCompany = String(e.target["mail-company"].value) || "";
-  //   const mailMessage = String(e.target["mail-message"].value) || "";
-  //   const subject = `${mailName}${mailCompany ? " from " + mailCompany : ""}`;
+  try {
+    const { data } = await resend.emails.send({
+      from: `${formFields.name} <onboarding@resend.dev>`,
+      to: ["wecreus@gmail.com"],
+      subject: `${formFields.name}${formFields.company ? " from " + formFields.company : ""}`,
+      react: EmailTemplate({ ...formFields }),
+      text: `${formFields.mailMessage}`,
+    });
 
-  //   const result = `mailto:wecreus@gmail.com?subject=${subject}&body=${mailMessage}`;
+    console.log("Email sent", data);
+    return {
+      errors: {},
+      message: "Message sent",
+    };
+  } catch (error) {
+    console.error("Failed to send email", error);
 
-  return {
-    errors: {},
-    message: "Message sent",
-  };
-  // // Prepare data for insertion into the database
-  // const { customerId, amount, status } = validatedFields.data;
-  // const amountInCents = amount * 100;
-  // const date = new Date().toISOString().split('T')[0];
-
-  // // Insert data into the database
-  // try {
-
-  // } catch (error) {
-  //   // If a database error occurs, return a more specific error.
-  //   return {
-  //     message: 'Database Error: Failed to Create Invoice.',
-  //   };
-  // }
+    return {
+      errors: { status: "Failed to send email" },
+      message: "Failed to send email",
+    };
+  }
 }
