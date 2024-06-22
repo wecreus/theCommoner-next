@@ -1,5 +1,10 @@
 import "./Contact.scss";
 import FormSidebar from "@/app/ui/FormSiderbar/FormSidebar";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Contact',
+};
 
 // TODO: update links across the website
 const ContactMe = () => {

@@ -14,7 +14,10 @@ import "@/styles/globals.scss";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://commoner.vercel.app/"),
-  title: "theCommoner",
+  title: {
+    template: '%s | theCommoner',
+    default: 'theCommoner',
+  },
   description: "Portfolio website made by Danylo Riabchuk",
 };
 
