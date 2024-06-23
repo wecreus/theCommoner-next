@@ -21,7 +21,7 @@ Built with [Typescript](https://www.typescriptlang.org/) and [SCSS](https://sass
 
 ## Features
 * Home page tracks what user is looking at with IntersectionObserver and lazy loads sections based on scroll position.
-  * All the database manipulations are done on the server with server actions [actions.ts](/app/lib/actions.ts)
+  * All the database manipulations are done on the server with server actions ([actions.ts](/app/lib/actions.ts) and [data.ts](/app/lib/data.ts))
   * Reviews is loading data from Firebase and, if present, parses markdown received and converts them to DOM elements with [DOMPurify.sanitize](https://github.com/cure53/DOMPurify?tab=readme-ov-file#how-do-i-use-it). Also done on the server
   * Globe is based around [Three-Globe](https://github.com/vasturiano/three-globe) with lightning from [Environment](https://github.com/pmndrs/drei?tab=readme-ov-file#environment)
     * Globe points are stored on the server and send to the client, with some points deleted/modified by me to reduce file size.
