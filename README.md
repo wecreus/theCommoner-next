@@ -12,7 +12,7 @@ This is a version of https://github.com/wecreus/theCommoner but built with Next.
 
 ## Implementation
 
-This project was build as Full-Stack Web APP with [Next.js 15 RC](https://nextjs.org/blog/next-15-rc), [React 19 RC](https://react.dev/blog/2024/04/25/react-19), [Redux](https://redux.js.org/), [Firebase](https://firebase.google.com/) for basic database manipulation, [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) (alpha version for React 19 support), [Three-Globe](https://github.com/vasturiano/three-globe) for creating an interactive 3D Globe and [Resend](https://resend.com/) for basic Email functionality. 
+This project was build as Full-Stack Web APP with [Next.js 15 RC](https://nextjs.org/blog/next-15-rc), [React 19 RC](https://react.dev/blog/2024/04/25/react-19), [Redux](https://redux.js.org/), [Firebase](https://firebase.google.com/) for basic database manipulation, [React Three Fiber](https://github.com/pmndrs/react-three-fiber) (alpha version for React 19 support), [Three-Globe](https://github.com/vasturiano/three-globe) for creating an interactive 3D Globe and [Resend](https://resend.com/) for basic Email functionality. 
 
 And a Candy heart shape by Google [CC-BY](https://creativecommons.org/licenses/by/3.0/).
 
