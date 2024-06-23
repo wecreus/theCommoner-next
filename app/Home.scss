@@ -14,9 +14,11 @@
   box-sizing: border-box;
   align-items: flex-end;
   padding: 15px 12px;
+  pointer-events: all;
 
   @include fromDesktopScreen {
     padding: 20px 17px;
+    
   }
 
   @include toPhoneScreen {
@@ -33,11 +35,13 @@
     animation: jumpPageSelector 6s normal;
     width: 100px;
     padding: 40px 0;
+    
 
     @include fromDesktopScreen {
       width: 150px;
       animation: none;
       transform: translate(-10%, -50%);
+      pointer-events: none;
     }
 
     @include toPhoneScreen {

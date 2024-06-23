@@ -4,12 +4,13 @@ import Map from "@/public/icons/map.svg";
 import Linkedin from "@/public/icons/linkedin.svg";
 import Telegram from "@/public/icons/telegram.svg";
 import PDFicon from "@/public/icons/PDF.svg";
+import { memo } from "react";
 import "./FormSidebar.scss";
 
 const dummyText =
   "Itext ever since the 1500s, when an unknown printer took a galley of type and scram";
 
-const FormSidebar = () => {
+const FormSidebar = memo(() => {
   return (
     <div className="Form-sidebar">
       <div className="Form-sidebar__text">
@@ -116,6 +117,8 @@ const FormSidebar = () => {
       </div>
     </div>
   );
-};
+});
+
+FormSidebar.displayName = "FormSidebar";
 
 export default FormSidebar;

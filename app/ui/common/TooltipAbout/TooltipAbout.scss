@@ -1,0 +1,33 @@
+.TooltipAbout {
+  cursor: help;
+  display: inline-block;
+  border-radius: 25px;
+  padding: 0 5px;
+  margin: 0 0 0 15px;
+  font-size: 75%;
+  color: rgba(255, 255, 255, 0.8);
+  font-variation-settings: "slnt" 0;
+  position: relative;
+  opacity: 0.3;
+  transition: all 200ms ease;
+
+  &:hover {
+    opacity: 1;
+
+    &:before {
+      background-color: rgba(193, 193, 193, 0.254);
+    }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    height: 90%;
+    aspect-ratio: 1/1;
+    border-radius: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255, 255, 255, 0.26);
+  }
+}
