@@ -4,8 +4,8 @@ import Header from "@/app/ui/Header/Header";
 import StoreProvider from "./StoreProvider";
 import ThemeProvider from "./ui/ThemeProvider";
 import GradientSVG from "./ui/common/GradientSVG";
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@/styles/globals.scss";
 
 // https://stackoverflow.com/questions/78636740/how-to-specify-font-slant-slnt-when-using-nextjs
@@ -17,8 +17,8 @@ import "@/styles/globals.scss";
 export const metadata: Metadata = {
   metadataBase: new URL("https://commoner.vercel.app/"),
   title: {
-    template: '%s | theCommoner',
-    default: 'theCommoner',
+    template: "%s | theCommoner",
+    default: "theCommoner",
   },
   description: "Portfolio website made by Danylo Riabchuk",
 };
@@ -32,8 +32,9 @@ export default function RootLayout({
     <StoreProvider>
       <html lang="en">
         <head>
+          <meta name="darkreader-lock" />
         </head>
-        <body >
+        <body>
           <ThemeProvider>
             <Header />
             {children}
