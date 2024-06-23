@@ -24,7 +24,7 @@ Built with [Typescript](https://www.typescriptlang.org/) and [SCSS](https://sass
   * All the database manipulations are done on the server with server actions ([actions.ts](/app/lib/actions.ts) and [data.ts](/app/lib/data.ts))
   * Reviews is loading data from Firebase and, if present, parses markdown received and converts them to DOM elements with [DOMPurify.sanitize](https://github.com/cure53/DOMPurify?tab=readme-ov-file#how-do-i-use-it). Also done on the server
   * Globe is based around [Three-Globe](https://github.com/vasturiano/three-globe) with lightning from [Environment](https://github.com/pmndrs/drei?tab=readme-ov-file#environment)
-    * Globe points are stored on the server and send to the client, with some points deleted/modified by me to reduce file size.
+    * Globe countries map is built with points stored in [countries.json](/public/data/countries.json) which is a custom geojson created by me to reduce file size 
     * Heart animations are done with [React-Spring](https://github.com/pmndrs/react-spring) and all the camera animations are done with [CameraControls](https://github.com/pmndrs/drei?tab=readme-ov-file#cameracontrols)
     * You can click on the heart or on an empty space in the embedded html to center the camera around Ukraine.
 * Header tracks scroll position and collapses when user scrolls down. Also allows for quick scroll to top by clicking on an empty space
