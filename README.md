@@ -3,7 +3,7 @@ My blog for random stuff that I like.
 
 View it online https://commoner.vercel.app/
 
-This is a version of https://github.com/wecreus/theCommoner but built with Next.js 15rc for better performance, security and accessibility. 
+This is a version of https://github.com/wecreus/theCommoner but built with Next.js for better performance, security and accessibility. 
 
 <div align="center">
 
