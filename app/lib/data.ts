@@ -1,18 +1,14 @@
-"use server";
 import db from "@/app/lib/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import linkMarkdownParser from "@/app/lib/utils/linkMarkdownParser";
 import { type GalleryType, ReviewType } from "./definitions";
 import { mockGallery, mockReviews } from "./mocks";
 
-// TODO: add revalidate
-// currently after serving a component to the client, component THEN sends a request for the data. 
-// so basically make the component already filled with data
-export async function getGallery(): Promise<GalleryType[]> {
+export async function fetchGallery(): Promise<GalleryType[]> {
   return mockGallery;
 }
 
-export async function getReviews(): Promise<ReviewType[]> {
+export async function fetchReviews(): Promise<ReviewType[]> {
   if(process.env.NODE_ENV == "development"){
     return mockReviews;
   }
