@@ -15,7 +15,7 @@ const Map = () => {
     <div className="card__content card__map">
       <Canvas shadows camera={{ fov: 50, position: [55.12, 87.91, 95.46] }} gl={{antialias: true}}>
         <Globe />
-        <Environment preset={"dawn"} />
+        <Environment files={'/shapes/kiara.hdr'}/>
         <Camera />
       </Canvas>
     </div>
