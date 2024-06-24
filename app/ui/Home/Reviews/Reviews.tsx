@@ -3,26 +3,15 @@ import { useState, useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { type ReviewType } from "@/app/lib/definitions";
 import ReviewSlide from "./ReviewSlide";
-import { getReviews } from "@/app/lib/data";
 import Loading from "@/app/loading";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-circular-progressbar/dist/styles.css";
 import "./Reviews.scss";
 
-export default function Reviews({ focused }: { focused: boolean }) {
+export default function Reviews({ focused, reviews }: { focused: boolean, reviews: ReviewType[] }) {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const [reviews, setReviews] = useState<ReviewType[]>();
 
-  useEffect(() => {
-    const fetchReviews = async () => {
-      const reviews = await getReviews();
-      setReviews(reviews);
-    };
-
-    fetchReviews();
-  }, []);
-
-  if(!reviews) return <Loading />;
+  if(!reviews) return <>emmm</>;
 
   return (
     <div className="reviews animate-render">
