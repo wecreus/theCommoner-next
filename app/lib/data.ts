@@ -4,10 +4,7 @@ import linkMarkdownParser from "@/app/lib/utils/linkMarkdownParser";
 import { type GalleryType, ReviewType } from "./definitions";
 import { mockGallery, mockReviews } from "./mocks";
 
-// TODO: add revalidate
-
 export async function fetchGallery(): Promise<GalleryType[]> {
-
   return mockGallery;
 }
 
