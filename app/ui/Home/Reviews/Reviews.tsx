@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { type ReviewType } from "@/app/lib/definitions";
 import ReviewSlide from "./ReviewSlide";
-import Loading from "@/app/loading";
+import { memo } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-circular-progressbar/dist/styles.css";
 import "./Reviews.scss";
 
-export default function Reviews({ focused, reviews }: { focused: boolean, reviews: ReviewType[] }) {
+const Reviews = memo(({ focused, reviews }: { focused: boolean, reviews: ReviewType[] }) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
 
   if(!reviews) return <>emmm</>;
@@ -76,7 +76,11 @@ export default function Reviews({ focused, reviews }: { focused: boolean, review
       )}
     </div>
   );
-}
+});
+
+Reviews.displayName = "Reviews";
+
+export default Reviews;
 
 interface CustomArrowProps {
   clickHandler: () => void;

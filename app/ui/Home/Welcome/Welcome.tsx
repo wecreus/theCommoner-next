@@ -1,10 +1,10 @@
 "use client";
 
 import CoolArrow from "@/public/icons/arrow.svg";
-
+import { memo } from "react";
 import { ReactTyped, Typed } from "react-typed";
 
-const Welcome = ({ onScrollClick }: { onScrollClick: () => void }) => {
+const Welcome = memo(({ onScrollClick }: { onScrollClick: () => void }) => {
   return (
     <>
       <p className="card__content welcome">
@@ -43,6 +43,8 @@ const Welcome = ({ onScrollClick }: { onScrollClick: () => void }) => {
       </div>
     </>
   );
-};
+});
+
+Welcome.displayName = "Welcome";
 
 export default Welcome;
