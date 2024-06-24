@@ -20,7 +20,7 @@ const Map = dynamic(() => import("@/app/ui/Home/Map/Map"), {
   loading: () => <Loading />,
 });
 
-// TODO: bug in build with how Reviews and Gallery uses server actions
+// TODO: refactor this whole contraption into a separate component that doesn't know about the total children count 
 const Home = ({ gallery, reviews }: { gallery: GalleryType[], reviews: ReviewType[]}) => {
   const [pageNumber, setPageNumber] = useState(0);
 
