@@ -14,6 +14,8 @@ import "@/styles/globals.scss";
 // who knows why
 // const inter = localFont({ src: "../fonts/Inter.woff2" });
 
+//TODO: make a background of barely visible grid of computer circuit boards and write a blog post on how to do it
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://commoner.vercel.app/"),
   title: {
