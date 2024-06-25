@@ -5,7 +5,28 @@ import { type GalleryType, ReviewType } from "./definitions";
 import { mockGallery, mockReviews } from "./mocks";
 
 export async function fetchGallery(): Promise<GalleryType[]> {
-  return mockGallery;
+  if(process.env.NODE_ENV == "development"){
+    return mockGallery;
+  }
+
+  try {
+    const galleryCollectionRef = collection(db, "gallery");
+
+    const data = await getDocs(galleryCollectionRef);
+
+    return data.docs.map((doc) => {
+      const data = doc.data();
+
+      return {
+        ...data,
+        id: doc.id,
+      } as GalleryType;
+    });
+  } catch (error) {
+    console.error("Database Error: ", error);
+    return [];
+    // throw new Error("");
+  }
 }
 
 export async function fetchReviews(): Promise<ReviewType[]> {
@@ -29,8 +50,8 @@ export async function fetchReviews(): Promise<ReviewType[]> {
       } as ReviewType;
     });
   } catch (error) {
-    console.error("Database Error:", error);
+    console.error("Database Error: ", error);
     return [];
-    // throw new Error("Failed to fetch revenue data.");
+    // throw new Error("");
   }
 }
