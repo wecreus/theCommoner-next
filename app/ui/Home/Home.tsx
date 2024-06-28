@@ -18,6 +18,7 @@ const Reviews = dynamic(() => import("@/app/ui/Home/Reviews/Reviews"), {
 
 const Map = dynamic(() => import("@/app/ui/Home/Map/Map"), {
   loading: () => <Loading />,
+  ssr: false,
 });
 
 // TODO: refactor this whole contraption into a separate component that doesn't know about the total children count 
