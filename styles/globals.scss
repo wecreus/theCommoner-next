@@ -19,7 +19,8 @@
   height: 100%;
   width: 100%;
   box-sizing: border-box;
-
+  color-scheme: dark;
+  
   /* TODO: look into using @property for animated transition on variable change*/
   @each $theme in $themes {
     $i: index($themes, $theme);
