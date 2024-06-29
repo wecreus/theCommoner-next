@@ -1,22 +1,22 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
-import useIntersectionObserver from "@/app/lib/utils/hooks/useIntersectionObserver";
-import MainPageSelector from "@/app/ui/MainPageSelector";
-import Welcome from "@/app/ui/Home/Welcome/Welcome";
+import useIntersectionObserver from "@/lib/utils/hooks/useIntersectionObserver";
+import MainPageSelector from "@/ui/MainPageSelector";
+import Welcome from "@/ui/Home/Welcome/Welcome";
 import Loading from "@/app/loading";
 import dynamic from "next/dynamic";
 import "./Home.scss";
-import { GalleryType, ReviewType } from "@/app/lib/definitions";
+import { GalleryType, ReviewType } from "@/lib/definitions";
 
-const Gallery = dynamic(() => import("@/app/ui/Home/Gallery/Gallery"), {
+const Gallery = dynamic(() => import("@/ui/Home/Gallery/Gallery"), {
   loading: () => <Loading />,
 });
 
-const Reviews = dynamic(() => import("@/app/ui/Home/Reviews/Reviews"), {
+const Reviews = dynamic(() => import("@/ui/Home/Reviews/Reviews"), {
   loading: () => <Loading />,
 });
 
-const Map = dynamic(() => import("@/app/ui/Home/Map/Map"), {
+const Map = dynamic(() => import("@/ui/Home/Map/Map"), {
   loading: () => <Loading />,
   ssr: false,
 });

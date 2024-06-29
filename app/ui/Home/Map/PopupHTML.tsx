@@ -1,7 +1,7 @@
 import { Html } from "@react-three/drei";
 import { useRouter } from "next/navigation";
-import { updateIsInRange } from "@/app/lib/store/globe/globeSlice";
-import { useAppSelector, useAppDispatch } from "@/app/lib/store/hooks";
+import { updateIsInRange } from "@/lib/store/globe/globeSlice";
+import { useAppSelector, useAppDispatch } from "@/lib/store/hooks";
 import { useRef } from "react";
 
 const PopupHTML = ({ handleClick }: { handleClick: () => void }) => {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Footer from "@/app/ui/Footer/Footer";
-import Header from "@/app/ui/Header/Header";
+import Footer from "@/ui/Footer/Footer";
+import Header from "@/ui/Header/Header";
 import StoreProvider from "./StoreProvider";
 import ThemeProvider from "./ui/ThemeProvider";
 import GradientSVG from "./ui/common/GradientSVG";

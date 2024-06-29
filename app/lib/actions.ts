@@ -1,7 +1,7 @@
 "use server";
 import { z } from "zod";
 import { Resend } from "resend";
-import { EmailTemplate } from "@/app/ui/EmailTemplate";
+import { EmailTemplate } from "@/ui/EmailTemplate";
 import { EmailState } from "./definitions";
 
 const resend = new Resend(process.env.RESEND_API_KEY);

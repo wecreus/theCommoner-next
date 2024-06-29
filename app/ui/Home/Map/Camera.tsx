@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import { CameraControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useAppDispatch } from "@/app/lib/store/hooks";
-import { updateIsInRange } from "@/app/lib/store/globe/globeSlice";
+import { useAppDispatch } from "@/lib/store/hooks";
+import { updateIsInRange } from "@/lib/store/globe/globeSlice";
 
 // TODO: rotate camera to interesting point when idle
 const Camera = () => {

@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 
-import ThemeSwitcher from "@/app/ui/ThemeSwitcher";
+import ThemeSwitcher from "@/ui/ThemeSwitcher";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);

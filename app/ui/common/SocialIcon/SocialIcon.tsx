@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import GradientSVG from "@/app/ui/common/GradientSVG";
+import GradientSVG from "@/ui/common/GradientSVG";
 import "./SocialIcon.scss";
 
 interface SocialIconProps {

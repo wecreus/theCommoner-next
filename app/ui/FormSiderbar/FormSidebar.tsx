@@ -1,5 +1,5 @@
-import SocialIcon from "@/app/ui/common/SocialIcon/SocialIcon";
-import Divider from "@/app/ui/common/Divider/Divider";
+import SocialIcon from "@/ui/common/SocialIcon/SocialIcon";
+import Divider from "@/ui/common/Divider/Divider";
 import Map from "@/public/icons/map.svg";
 import Linkedin from "@/public/icons/linkedin.svg";
 import Telegram from "@/public/icons/telegram.svg";

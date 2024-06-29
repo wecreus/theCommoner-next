@@ -1,6 +1,6 @@
 import Link from "next/link";
 import CommonerWhite from "@/public/icons/commonerwhite.svg";
-import GradientSVG from "@/app/ui/common/GradientSVG";
+import GradientSVG from "@/ui/common/GradientSVG";
 
 const NotFound = () => {
 

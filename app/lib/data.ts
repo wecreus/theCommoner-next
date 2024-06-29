@@ -1,6 +1,6 @@
-import db from "@/app/lib/firestore";
+import db from "@/lib/firestore";
 import { collection, getDocs } from "firebase/firestore";
-import linkMarkdownParser from "@/app/lib/utils/linkMarkdownParser";
+import linkMarkdownParser from "@/lib/utils/linkMarkdownParser";
 import { type GalleryType, ReviewType } from "./definitions";
 import { mockGallery, mockReviews } from "./mocks";
 

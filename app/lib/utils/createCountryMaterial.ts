@@ -1,7 +1,7 @@
 import { Color, ShaderMaterial, MeshStandardMaterial } from "three";
 import { scaleSequentialSqrt, interpolateGreys } from "d3";
 
-import { type FeaturesEntityType } from "@/app/lib/definitions";
+import { type FeaturesEntityType } from "@/lib/definitions";
 
 const createCountryMaterial = (d: FeaturesEntityType) => {
   if (d.properties?.ADMIN === "Ukraine") {
