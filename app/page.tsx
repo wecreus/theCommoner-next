@@ -1,4 +1,4 @@
-import Home from "@/app/ui/Home/Home";
+import Home from "@/ui/Home/Home";
 import { fetchGallery, fetchReviews } from "./lib/data";
 
 export const revalidate = 3600;

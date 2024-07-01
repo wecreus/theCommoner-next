@@ -1,8 +1,8 @@
 "use server";
 import { z } from "zod";
 import { Resend } from "resend";
-import { EmailTemplate } from "@/app/ui/EmailTemplate";
-import { EmailState } from "./definitions";
+import { EmailTemplate } from "@/ui/EmailTemplate";
+import type { EmailState } from "./definitions";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -43,7 +43,7 @@ export async function sendEmail(prevState: EmailState, formData: FormData) {
     const { data } = await resend.emails.send({
       from: `${formFields.name} <onboarding@resend.dev>`,
       to: ["wecreus@gmail.com"],
-      subject: `${formFields.name}${formFields.company ? " from " + formFields.company : ""}`,
+      subject: `${formFields.name}${formFields.company ? ` from ${formFields.company}` : ""}`,
       react: EmailTemplate({ ...formFields }),
       text: `${formFields.mailMessage}`,
     });

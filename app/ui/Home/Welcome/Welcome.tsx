@@ -1,10 +1,10 @@
 "use client";
 
 import CoolArrow from "@/public/icons/arrow.svg";
+import { memo } from "react";
+import { ReactTyped, type Typed } from "react-typed";
 
-import { ReactTyped, Typed } from "react-typed";
-
-const Welcome = ({ onScrollClick }: { onScrollClick: () => void }) => {
+const Welcome = memo(({ onScrollClick }: { onScrollClick: () => void }) => {
   return (
     <>
       <p className="card__content welcome">
@@ -14,9 +14,9 @@ const Welcome = ({ onScrollClick }: { onScrollClick: () => void }) => {
             typeSpeed={100}
             backSpeed={20}
             className="react-typed gradient-text"
-            onComplete={(instance: Typed) =>
-              (instance.cursor.className = "hidden")
-            }
+            onComplete={(instance: Typed) => {
+              instance.cursor.className = "hidden";
+            }}
           />
           <span className="commoner__background">theCOMMONER</span>
         </span>
@@ -43,6 +43,8 @@ const Welcome = ({ onScrollClick }: { onScrollClick: () => void }) => {
       </div>
     </>
   );
-};
+});
+
+Welcome.displayName = "Welcome";
 
 export default Welcome;

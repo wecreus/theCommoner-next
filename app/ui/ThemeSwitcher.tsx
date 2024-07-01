@@ -1,8 +1,8 @@
 "use client";
 
 import HalfCircle from "@/public/icons/halfCircle.svg";
-import { useAppSelector, useAppDispatch } from "@/app/lib/store/hooks";
-import { updateTheme } from "@/app/lib/store/theme/themeSlice";
+import { useAppSelector, useAppDispatch } from "@/lib/store/hooks";
+import { updateTheme } from "@/lib/store/theme/themeSlice";
 import style from "@/styles/exports.module.scss";
 import { memo } from "react";
 import clsx from "clsx";
@@ -41,7 +41,7 @@ const ThemeList = memo(() => {
                 [`theme${i + 1}`]: true,
                 "ThemeList--selected": i === storeTheme,
               })}
-              key={"theme" + i}
+              key={`theme${i}`}
               onClick={() => updateStore(i)}
             >
               <HalfCircle className="ThemeList__theme ThemeList__theme--primary" />

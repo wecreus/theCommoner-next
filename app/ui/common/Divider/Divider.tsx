@@ -8,24 +8,21 @@ type DividerProps = {
 
 const Divider = ({ className, children }: DividerProps) => {
   if (!children) {
-    return <div className={clsx("divider", className)}></div>;
+    return <div className={clsx("divider", className)} />;
   }
 
   return (
     <div className={clsx("divider-group", className)}>
       <div
-        className={clsx(
-          "divider-group__border",
-          "divider-group__border--left"
-        )}
-      ></div>
+        className={clsx("divider-group__border", "divider-group__border--left")}
+      />
       {children}
       <div
         className={clsx(
           "divider-group__border",
           "divider-group__border--right"
         )}
-      ></div>
+      />
     </div>
   );
 };

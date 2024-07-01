@@ -1,82 +1,88 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
-import { type ReviewType } from "@/app/lib/definitions";
+import type { ReviewType } from "@/lib/definitions";
 import ReviewSlide from "./ReviewSlide";
-import Loading from "@/app/loading";
+import { memo } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-circular-progressbar/dist/styles.css";
 import "./Reviews.scss";
 
-export default function Reviews({ focused, reviews }: { focused: boolean, reviews: ReviewType[] }) {
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
+const Reviews = memo(
+  ({ focused, reviews }: { focused: boolean; reviews: ReviewType[] }) => {
+    const [currentSlide, setCurrentSlide] = useState<number>(0);
 
-  if(!reviews) return <>emmm</>;
+    if (!reviews) return <></>;
 
-  return (
-    <div className="reviews animate-render">
-      <p className="card__content card-reviews__content">
-        My <b>100% correct</b> and totally unbiased game reviews{" "}
-        <picture>
-          <img src={"/icons/AlienMonster.webp"} alt="" className="emoji" />
-        </picture>
-      </p>
-      {reviews && (
-        <Carousel
-          showThumbs={false}
-          showStatus={false}
-          className="carousel-reviews"
-          swipeable={false}
-          autoPlay
-          interval={8000}
-          transitionTime={400}
-          useKeyboardArrows
-          stopOnHover
-          selectedItem={currentSlide}
-          onChange={(i) => {
-            // why doesnt react do it on its own???
-            if (i !== currentSlide) {
-              setCurrentSlide(i);
-            }
-          }}
-          renderArrowNext={(onClickHandler) => (
-            <CustomArrow
-              clickHandler={() =>
-                currentSlide + 1 === reviews.length
-                  ? setCurrentSlide(0)
-                  : onClickHandler()
+    return (
+      <div className="reviews animate-render">
+        <p className="card__content card-reviews__content">
+          My <b>100% correct</b> and totally unbiased game reviews{" "}
+          <picture>
+            <img src={"/icons/AlienMonster.webp"} alt="" className="emoji" />
+          </picture>
+        </p>
+        {reviews && (
+          <Carousel
+            showThumbs={false}
+            showStatus={false}
+            className="carousel-reviews"
+            swipeable={false}
+            autoPlay
+            interval={8000}
+            transitionTime={400}
+            useKeyboardArrows
+            stopOnHover
+            selectedItem={currentSlide}
+            onChange={(i) => {
+              // why doesnt react do it on its own???
+              if (i !== currentSlide) {
+                setCurrentSlide(i);
               }
-              direction={"next"}
-            />
-          )}
-          renderArrowPrev={(onClickHandler) => (
-            <CustomArrow
-              clickHandler={() =>
-                currentSlide === 0
-                  ? setCurrentSlide(reviews.length - 1)
-                  : onClickHandler()
-              }
-              direction={"prev"}
-            />
-          )}
-        >
-          {reviews?.map((review, i) => (
-            <ReviewSlide
-              coverUrl={review.coverUrl}
-              name={review.name}
-              score={review.score}
-              description={review.description}
-              funFact={review.funFact}
-              selected={i === currentSlide}
-              key={review.name + i}
-              focused={focused}
-            />
-          ))}
-        </Carousel>
-      )}
-    </div>
-  );
-}
+            }}
+            renderArrowNext={(onClickHandler) => (
+              <CustomArrow
+                clickHandler={() =>
+                  currentSlide + 1 === reviews.length
+                    ? setCurrentSlide(0)
+                    : onClickHandler()
+                }
+                direction={"next"}
+              />
+            )}
+            renderArrowPrev={(onClickHandler) => (
+              <CustomArrow
+                clickHandler={() =>
+                  currentSlide === 0
+                    ? setCurrentSlide(reviews.length - 1)
+                    : onClickHandler()
+                }
+                direction={"prev"}
+              />
+            )}
+          >
+            {reviews?.map((review, i) => (
+              <ReviewSlide
+                coverUrl={review.coverUrl}
+                name={review.name}
+                score={review.score}
+                description={review.description}
+                funFact={review.funFact}
+                selected={i === currentSlide}
+                key={`${review.name}${i}`} 
+                focused={focused}
+              />
+            ))}
+          </Carousel>
+        )}
+      </div>
+    );
+  }
+);
+
+Reviews.displayName = "Reviews";
+
+export default Reviews;
 
 interface CustomArrowProps {
   clickHandler: () => void;
@@ -90,6 +96,6 @@ const CustomArrow = ({ clickHandler, direction }: CustomArrowProps) => {
         carousel-reviews__arrow
         carousel-reviews__arrow--${direction}`}
       onClick={clickHandler}
-    ></div>
+    />
   );
 };

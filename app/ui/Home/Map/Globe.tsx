@@ -1,13 +1,13 @@
 import { useRef, useLayoutEffect, useMemo } from "react";
 import { extend, useThree } from "@react-three/fiber";
 import { MeshStandardMaterial } from "three";
-import { type FeaturesEntityType } from "@/app/lib/definitions";
+import type { FeaturesEntityType } from "@/lib/definitions";
 import ThreeGlobe from "three-globe";
 import GlobeData from "@/public/data/countries.json";
-import createCountryMaterial from "@/app/lib/utils/createCountryMaterial";
+import createCountryMaterial from "@/lib/utils/createCountryMaterial";
 import Heart from "./Heart";
 import PopupHTML from "./PopupHTML";
-import { type CameraControls } from "@react-three/drei";
+import type { CameraControls } from "@react-three/drei";
 
 extend({ ThreeGlobe });
 

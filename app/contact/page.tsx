@@ -2,10 +2,10 @@
 
 import "./Contact.scss";
 import { useActionState, useEffect, useState, useRef } from "react";
-import FormSidebar from "@/app/ui/FormSiderbar/FormSidebar";
-import { sendEmail } from "@/app/lib/actions";
-import TooltipAbout from "@/app/ui/common/TooltipAbout/TooltipAbout";
-import type { EmailState } from "@/app/lib/definitions";
+import FormSidebar from "@/ui/FormSiderbar/FormSidebar";
+import { sendEmail } from "@/lib/actions";
+import TooltipAbout from "@/ui/common/TooltipAbout/TooltipAbout";
+import type { EmailState } from "@/lib/definitions";
 import clsx from "clsx";
 
 const initialState = { message: "", errors: {} };

@@ -4,12 +4,11 @@ import { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { a, useSpring, config } from "@react-spring/three";
 import { Outlines } from "@react-three/drei";
-import { Object3D } from "three";
-import THREE from "three";
+import type { Object3D, Mesh } from "three";
 
 type GLTFResult = {
   nodes: {
-    Cube002_Cube024: THREE.Mesh;
+    Cube002_Cube024: Mesh;
   };
 };
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Footer from "@/app/ui/Footer/Footer";
-import Header from "@/app/ui/Header/Header";
+import Footer from "@/ui/Footer/Footer";
+import Header from "@/ui/Header/Header";
 import StoreProvider from "./StoreProvider";
 import ThemeProvider from "./ui/ThemeProvider";
 import GradientSVG from "./ui/common/GradientSVG";
@@ -13,6 +13,8 @@ import "@/styles/globals.scss";
 // for some reason loading font from a local file results in a different font on mobile than on desktop
 // who knows why
 // const inter = localFont({ src: "../fonts/Inter.woff2" });
+
+//TODO: make a background of barely visible grid of computer circuit boards and write a blog post on how to do it
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://commoner.vercel.app/"),

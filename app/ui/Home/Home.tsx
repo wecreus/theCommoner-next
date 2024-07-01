@@ -1,23 +1,24 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
-import useIntersectionObserver from "@/app/lib/utils/hooks/useIntersectionObserver";
-import MainPageSelector from "@/app/ui/MainPageSelector";
-import Welcome from "@/app/ui/Home/Welcome/Welcome";
+import useIntersectionObserver from "@/lib/utils/hooks/useIntersectionObserver";
+import MainPageSelector from "@/ui/MainPageSelector";
+import Welcome from "@/ui/Home/Welcome/Welcome";
 import Loading from "@/app/loading";
 import dynamic from "next/dynamic";
 import "./Home.scss";
-import { GalleryType, ReviewType } from "@/app/lib/definitions";
+import type { GalleryType, ReviewType } from "@/lib/definitions";
 
-const Gallery = dynamic(() => import("@/app/ui/Home/Gallery/Gallery"), {
+const Gallery = dynamic(() => import("@/ui/Home/Gallery/Gallery"), {
   loading: () => <Loading />,
 });
 
-const Reviews = dynamic(() => import("@/app/ui/Home/Reviews/Reviews"), {
+const Reviews = dynamic(() => import("@/ui/Home/Reviews/Reviews"), {
   loading: () => <Loading />,
 });
 
-const Map = dynamic(() => import("@/app/ui/Home/Map/Map"), {
+const MapSection = dynamic(() => import("@/ui/Home/Map/MapSection"), {
   loading: () => <Loading />,
+  ssr: false,
 });
 
 // TODO: refactor this whole contraption into a separate component that doesn't know about the total children count 
@@ -73,7 +74,7 @@ const Home = ({ gallery, reviews }: { gallery: GalleryType[], reviews: ReviewTyp
         {wasGalleryVisible && <Gallery gallery={gallery}/>}
       </section>
       <section className="card card-map" ref={mapRef}>
-        {wasMapVisible && <Map />}
+        {wasMapVisible && <MapSection />}
       </section>
     </>
   );
