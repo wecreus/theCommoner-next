@@ -2,9 +2,9 @@
 
 import "./Gallery.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { memo, useEffect, useState } from "react";
+import { memo } from "react";
 import { Carousel } from "react-responsive-carousel";
-import { type GalleryType } from "@/lib/definitions";
+import type { GalleryType } from "@/lib/definitions";
 import SocialIcon from "@/ui/common/SocialIcon/SocialIcon";
 import Flickr from "@/public/icons/flickr.svg";
 import Instagram from "@/public/icons/instagram.svg";
@@ -13,7 +13,7 @@ import Xcom from "@/public/icons/Xcom.svg";
 
 const Gallery = memo(({ gallery }: { gallery: GalleryType[] }) => {
 
-  if(!gallery) return <>emmm</>;
+  if(!gallery) return <></>;
   
   return (
     <div className="card__content card__gallery animate-render">
@@ -34,12 +34,12 @@ const Gallery = memo(({ gallery }: { gallery: GalleryType[] }) => {
         {gallery.map((picture, i) => (
           <div
             style={{
-              backgroundImage: "url(" + picture.url + ")",
+              backgroundImage: `url(${picture.url})`,
             }}
             title={picture.title}
             aria-label={picture.title}
             className="carousel-gallery__image"
-            key={picture.title + i}
+            key={`${picture.title}${i}`}
           >
             <span style={{ userSelect: "none"}}>{picture.title}</span>
           </div>

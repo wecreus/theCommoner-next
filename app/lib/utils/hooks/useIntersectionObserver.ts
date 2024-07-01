@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, RefObject} from "react";
+import { useState, useEffect, useRef, type RefObject} from "react";
 
 type IntersectionObserverTypes = [RefObject<HTMLElement | null> , boolean, boolean];
 
@@ -16,7 +16,7 @@ const useIntersectionObserver = () => {
 
     const observer = new IntersectionObserver(handleIntersect, { threshold: 0.2});
 
-    if (ref && ref.current) {
+    if (ref?.current) {
       observer.observe(ref.current);
     }
 

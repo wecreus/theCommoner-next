@@ -1,27 +1,29 @@
-
 type MainPageSelectorProps = {
   totalPages: number;
   currentPage: number;
   handlePageChange: (page: number) => void;
-}
+};
 
-const MainPageSelector = ({ totalPages, currentPage, handlePageChange }: MainPageSelectorProps) => {
-
+const MainPageSelector = ({
+  totalPages,
+  currentPage,
+  handlePageChange,
+}: MainPageSelectorProps) => {
   return (
     <div className="page-selector__hidden">
       <div className="page-selector">
         {[...Array(totalPages)].map((e, i) => (
           <div
-            key={i + `pageselector`}
+            key={`pageselector${i}`}
             className={`page-selector__page ${
-                currentPage === i ? "page-selector__page-selected" : ""
+              currentPage === i ? "page-selector__page-selected" : ""
             }`}
             onClick={() => handlePageChange(i)}
-          ></div>
+          />
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default MainPageSelector;

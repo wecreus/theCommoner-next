@@ -1,4 +1,4 @@
-import { type GalleryType, ReviewType } from "./definitions";
+import type { GalleryType, ReviewType } from "./definitions";
 
 export const mockGallery: GalleryType[] = [
   {

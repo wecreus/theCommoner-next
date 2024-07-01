@@ -1,10 +1,13 @@
 import { memo } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import ProgressProvider from "@/ui/common/ProgressbarProvider";
-import { type ReviewType } from "@/lib/definitions";
+import type { ReviewType } from "@/lib/definitions";
 import Divider from "@/ui/common/Divider/Divider";
 
-type ReviewSlideProps = Omit<ReviewType, "id"> & { selected: boolean, focused: boolean };
+type ReviewSlideProps = Omit<ReviewType, "id"> & {
+  selected: boolean;
+  focused: boolean;
+};
 
 const ReviewSlide = memo(
   ({
@@ -14,14 +17,14 @@ const ReviewSlide = memo(
     description,
     funFact,
     selected,
-    focused
+    focused,
   }: ReviewSlideProps) => {
     return (
       <div className="review-slide">
         <div
           className="review-slide__cover"
           style={{
-            backgroundImage: "url(" + coverUrl + ")",
+            backgroundImage: `url(${coverUrl})`,
           }}
           title={name}
           aria-label={name}
@@ -64,7 +67,7 @@ const ReviewSlide = memo(
           <p
             className="review-slide__description"
             dangerouslySetInnerHTML={{ __html: description }}
-          ></p>
+          />
           {!!funFact && (
             <>
               <Divider className={"review-slide__divider"}>
@@ -72,7 +75,7 @@ const ReviewSlide = memo(
                   FUN FACT
                   <i
                     style={{
-                      backgroundImage: `url(icons/penoriginal.svg)`,
+                      backgroundImage: "url(icons/penoriginal.svg)",
                     }}
                     className="review-slide__divider--icon"
                   />
@@ -81,7 +84,7 @@ const ReviewSlide = memo(
               <div
                 className="review-slide__fun"
                 dangerouslySetInnerHTML={{ __html: funFact }}
-              ></div>
+              />
             </>
           )}
         </div>

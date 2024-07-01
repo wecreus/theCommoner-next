@@ -10,7 +10,7 @@ import "./Map.scss";
 // TODO:
 // add point to Mariupol
 // remove magnifying glass on mobile safari 
-const Map = memo(() => {
+const MapSection = memo(() => {
 
   return (
     <div className="card__content card__map">
@@ -23,6 +23,6 @@ const Map = memo(() => {
   );
 });
 
-Map.displayName = "Map";
+MapSection.displayName = "MapSection";
 
-export default Map;
+export default MapSection;

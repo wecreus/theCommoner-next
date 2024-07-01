@@ -6,7 +6,7 @@ import Welcome from "@/ui/Home/Welcome/Welcome";
 import Loading from "@/app/loading";
 import dynamic from "next/dynamic";
 import "./Home.scss";
-import { GalleryType, ReviewType } from "@/lib/definitions";
+import type { GalleryType, ReviewType } from "@/lib/definitions";
 
 const Gallery = dynamic(() => import("@/ui/Home/Gallery/Gallery"), {
   loading: () => <Loading />,
@@ -16,7 +16,7 @@ const Reviews = dynamic(() => import("@/ui/Home/Reviews/Reviews"), {
   loading: () => <Loading />,
 });
 
-const Map = dynamic(() => import("@/ui/Home/Map/Map"), {
+const MapSection = dynamic(() => import("@/ui/Home/Map/MapSection"), {
   loading: () => <Loading />,
   ssr: false,
 });
@@ -74,7 +74,7 @@ const Home = ({ gallery, reviews }: { gallery: GalleryType[], reviews: ReviewTyp
         {wasGalleryVisible && <Gallery gallery={gallery}/>}
       </section>
       <section className="card card-map" ref={mapRef}>
-        {wasMapVisible && <Map />}
+        {wasMapVisible && <MapSection />}
       </section>
     </>
   );

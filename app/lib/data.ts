@@ -1,11 +1,11 @@
 import db from "@/lib/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import linkMarkdownParser from "@/lib/utils/linkMarkdownParser";
-import { type GalleryType, ReviewType } from "./definitions";
+import type { GalleryType, ReviewType } from "./definitions";
 import { mockGallery, mockReviews } from "./mocks";
 
 export async function fetchGallery(): Promise<GalleryType[]> {
-  if(process.env.NODE_ENV == "development"){
+  if (process.env.NODE_ENV === "development") {
     return mockGallery;
   }
 
@@ -30,10 +30,16 @@ export async function fetchGallery(): Promise<GalleryType[]> {
 }
 
 export async function fetchReviews(): Promise<ReviewType[]> {
-  if(process.env.NODE_ENV == "development"){
-    return mockReviews;
+  if (process.env.NODE_ENV === "development") {
+    return mockReviews.map((doc) => {
+      return {
+        ...doc,
+        funFact: linkMarkdownParser(doc.funFact),
+        description: linkMarkdownParser(doc.description),
+      } as ReviewType;
+    });
   }
-  
+
   try {
     const reviewsCollectionRef = collection(db, "reviews");
 

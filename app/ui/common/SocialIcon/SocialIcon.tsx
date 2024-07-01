@@ -1,4 +1,4 @@
-import clsx from "clsx"
+import clsx from "clsx";
 import GradientSVG from "@/ui/common/GradientSVG";
 import "./SocialIcon.scss";
 
@@ -15,7 +15,13 @@ interface SocialIconProps {
   gradient: string;
 }
 
-const SocialIcon = ({ className, url, name, Icon, gradient }: SocialIconProps) => {
+const SocialIcon = ({
+  className,
+  url,
+  name,
+  Icon,
+  gradient,
+}: SocialIconProps) => {
   return (
     <a
       className={clsx("SocialIcon-container", className)}
@@ -27,7 +33,7 @@ const SocialIcon = ({ className, url, name, Icon, gradient }: SocialIconProps) =
       <div className={"SocialIcon"}>
         <div className="SocialIcon-front">
           <svg className="SocialIcon-front__border" viewBox="0 0 80 80">
-            <rect rx="25" stroke="url(#borderGradient)"></rect>
+            <rect rx="25" stroke="url(#borderGradient)" />
           </svg>
           <Icon className="SocialIcon-front__icon" />
         </div>
@@ -36,7 +42,7 @@ const SocialIcon = ({ className, url, name, Icon, gradient }: SocialIconProps) =
           style={{
             background: gradient,
           }}
-        ></div>
+        />
         <GradientSVG
           idCSS={"borderGradient"}
           startColor={"#ffffff"}

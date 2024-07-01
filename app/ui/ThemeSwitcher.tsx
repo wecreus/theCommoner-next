@@ -41,7 +41,7 @@ const ThemeList = memo(() => {
                 [`theme${i + 1}`]: true,
                 "ThemeList--selected": i === storeTheme,
               })}
-              key={"theme" + i}
+              key={`theme${i}`}
               onClick={() => updateStore(i)}
             >
               <HalfCircle className="ThemeList__theme ThemeList__theme--primary" />

@@ -6,20 +6,19 @@ const linkMarkdownParser = (data?: string, className?: string) => {
 
   let result = String(data);
 
-  let links = result.match(/\[.*?\)/g);
+  const links = result.match(/\[.*?\)/g);
 
   if (links != null && links.length > 0) {
     for (let link of links) {
-      let txt = link.match(/\[(.*?)\]/)![1];
-      let url = link.match(/\((.*?)\)/)![1];
-      result = result.replace(
-        link,
-        `<a class="${className}" target="_blank" rel="noopener noreferrer" href="` +
-          url +
-          '">' +
-          txt +
-          "</a>"
-      );
+      const txt = link.match(/\[(.*?)\]/);
+      const url = link.match(/\((.*?)\)/);
+
+      if (txt && url) {
+        result = result.replace(
+          link,
+          `<a·class="${className}"·target="_blank"·rel="noopener·noreferrer"·href="${url[1]}">${txt[1]}</a>`
+        );
+      }
     }
   }
 

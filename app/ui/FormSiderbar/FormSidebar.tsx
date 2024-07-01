@@ -1,6 +1,6 @@
 import SocialIcon from "@/ui/common/SocialIcon/SocialIcon";
 import Divider from "@/ui/common/Divider/Divider";
-import Map from "@/public/icons/map.svg";
+import MapIcon from "@/public/icons/map.svg";
 import Linkedin from "@/public/icons/linkedin.svg";
 import Telegram from "@/public/icons/telegram.svg";
 import PDFicon from "@/public/icons/PDF.svg";
@@ -64,7 +64,7 @@ const FormSidebar = memo(() => {
             style={{
               backgroundImage: "url(images/profilepic.webp)",
             }}
-          ></div>
+          />
         </div>
         <p className="Form-profile__description">
           Front-end developer based in{" "}
@@ -75,10 +75,10 @@ const FormSidebar = memo(() => {
             }
             target={"_blank"}
             rel="noopener noreferrer"
-            title={'Show on the map'}
+            title={"Show on the map"}
           >
-            Ternopil, Ukraine 
-            <Map className="Form-profile__description--link-icon" />
+            Ternopil, Ukraine
+            <MapIcon className="Form-profile__description--link-icon" />
           </a>
         </p>
         <address className="Form-profile__quick-call">

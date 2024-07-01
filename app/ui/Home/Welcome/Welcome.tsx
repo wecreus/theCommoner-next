@@ -2,7 +2,7 @@
 
 import CoolArrow from "@/public/icons/arrow.svg";
 import { memo } from "react";
-import { ReactTyped, Typed } from "react-typed";
+import { ReactTyped, type Typed } from "react-typed";
 
 const Welcome = memo(({ onScrollClick }: { onScrollClick: () => void }) => {
   return (
@@ -14,9 +14,9 @@ const Welcome = memo(({ onScrollClick }: { onScrollClick: () => void }) => {
             typeSpeed={100}
             backSpeed={20}
             className="react-typed gradient-text"
-            onComplete={(instance: Typed) =>
-              (instance.cursor.className = "hidden")
-            }
+            onComplete={(instance: Typed) => {
+              instance.cursor.className = "hidden";
+            }}
           />
           <span className="commoner__background">theCOMMONER</span>
         </span>
