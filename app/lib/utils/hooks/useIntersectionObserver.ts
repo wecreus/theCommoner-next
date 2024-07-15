@@ -14,7 +14,7 @@ const useIntersectionObserver = () => {
       setWasVisible(prev => prev ? prev : entries[0].isIntersecting);
     };
 
-    const observer = new IntersectionObserver(handleIntersect, { threshold: 0.2});
+    const observer = new IntersectionObserver(handleIntersect, { threshold: 0.01 });
 
     if (ref?.current) {
       observer.observe(ref.current);
