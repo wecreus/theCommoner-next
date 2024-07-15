@@ -132,8 +132,7 @@
   box-sizing: border-box;
 
   &-welcome {
-    margin-bottom: 1px;
-    height: 100vh;
+    height: 99vh;
   }
 
   @include toPhoneScreen {
