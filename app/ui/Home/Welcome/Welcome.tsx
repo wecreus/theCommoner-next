@@ -24,7 +24,7 @@ const Welcome = memo(({ onScrollClick }: { onScrollClick: () => void }) => {
         <picture>
           <img src={"/icons/Thoughts.gif"} alt="" className="emoji" />
         </picture>
-        , and game reviews{" "}
+        , game reviews{" "}
         <picture>
           <img src={"/icons/AlienMonster.webp"} alt="" className="emoji" />
         </picture>
@@ -32,7 +32,7 @@ const Welcome = memo(({ onScrollClick }: { onScrollClick: () => void }) => {
         <picture>
           <img src={"/icons/Fireworks.webp"} alt="" className="emoji" />
         </picture>
-        , providing me with an opportunity to sharpen my skills as a web
+        . This project provides me with an opportunity to sharpen my skills as a web
         developer{" "}
         <picture>
           <img src={"/icons/Technologist.webp"} alt="" className="emoji" />

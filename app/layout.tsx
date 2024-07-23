@@ -7,14 +7,9 @@ import GradientSVG from "./ui/common/GradientSVG";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@/styles/globals.scss";
+import { Lato } from "next/font/google";
 
-// https://stackoverflow.com/questions/78636740/how-to-specify-font-slant-slnt-when-using-nextjs
-
-// for some reason loading font from a local file results in a different font on mobile than on desktop
-// who knows why
-// const inter = localFont({ src: "../fonts/Inter.woff2" });
-
-//TODO: make a background of barely visible grid of computer circuit boards and write a blog post on how to do it
+const lato = Lato({ subsets: ["latin"], weight: ["400", "700", "900"], style: ["normal", "italic"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://commoner.vercel.app/"),
@@ -36,7 +31,7 @@ export default function RootLayout({
         <head>
           <meta name="darkreader-lock" />
         </head>
-        <body>
+        <body className={lato.className}>
           <ThemeProvider>
             <Header />
             {children}
