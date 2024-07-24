@@ -3,32 +3,30 @@ import { useEffect, useMemo, useState } from "react";
 import useIntersectionObserver from "@/lib/utils/hooks/useIntersectionObserver";
 import MainPageSelector from "@/ui/MainPageSelector";
 import Welcome from "@/ui/Home/Welcome/Welcome";
+import Gallery from "@/ui/Home/Gallery/Gallery";
+import Reviews from "@/ui/Home/Reviews/Reviews";
 import Loading from "@/app/loading";
 import dynamic from "next/dynamic";
 import "./Home.scss";
 import type { GalleryType, ReviewType } from "@/lib/definitions";
-
-const Gallery = dynamic(() => import("@/ui/Home/Gallery/Gallery"), {
-  loading: () => <Loading />,
-});
-
-const Reviews = dynamic(() => import("@/ui/Home/Reviews/Reviews"), {
-  loading: () => <Loading />,
-});
 
 const MapSection = dynamic(() => import("@/ui/Home/Map/MapSection"), {
   loading: () => <Loading />,
   ssr: false,
 });
 
-// TODO: refactor this whole contraption into a separate component that doesn't know about the total children count 
-const Home = ({ gallery, reviews }: { gallery: GalleryType[], reviews: ReviewType[]}) => {
+// TODO: refactor this whole contraption into a separate component that doesn't know about the total children count
+const Home = ({
+  gallery,
+  reviews,
+}: {
+  gallery: GalleryType[];
+  reviews: ReviewType[];
+}) => {
   const [pageNumber, setPageNumber] = useState(0);
 
-  const [galleryRef, isGalleryVisible, wasGalleryVisible] =
-    useIntersectionObserver();
-  const [reviewsRef, isReviewsVisible, wasReviewsVisible] =
-    useIntersectionObserver();
+  const [galleryRef, isGalleryVisible] = useIntersectionObserver();
+  const [reviewsRef, isReviewsVisible] = useIntersectionObserver();
   const [mapRef, isMapVisible, wasMapVisible] = useIntersectionObserver();
   const [welcomeRef, isWelcomeVisible] = useIntersectionObserver();
 
@@ -68,10 +66,10 @@ const Home = ({ gallery, reviews }: { gallery: GalleryType[], reviews: ReviewTyp
         <Welcome onScrollClick={() => handlePageChange(1)} />
       </section>
       <section className="card card-reviews" ref={reviewsRef}>
-        {wasReviewsVisible && <Reviews focused={isReviewsVisible} reviews={reviews}/>}
+        <Reviews focused={isReviewsVisible} reviews={reviews} />
       </section>
       <section className="card card-gallery" ref={galleryRef}>
-        {wasGalleryVisible && <Gallery gallery={gallery}/>}
+        <Gallery gallery={gallery} />
       </section>
       <section className="card card-map" ref={mapRef}>
         {wasMapVisible && <MapSection />}

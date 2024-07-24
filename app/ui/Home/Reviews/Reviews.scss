@@ -51,7 +51,7 @@
       padding: 0 10px;
       align-items: center;
       font-size: 12px;
-      font-weight: 200;
+      font-weight: 400;
       opacity: 0.8;
       text-wrap: nowrap;
       gap: 10px;
@@ -128,7 +128,7 @@
     align-items: flex-start;
     text-align: left;
     font-size: 25px;
-    font-weight: 300;
+    font-weight: 400;
     width: 100%;
     grid-area: content;
 
@@ -165,7 +165,7 @@
 
     &--title {
       font-weight: 700;
-      font-variation-settings: "slnt" -8;
+      font-style: italic;
       text-shadow: 3px 1px 10px rgba(195, 186, 188, 0.165);
       font-size: 20px;
       display: none;
@@ -177,8 +177,8 @@
   }
 
   &__title {
-    font-weight: 700;
-    font-variation-settings: "slnt" -8;
+    font-weight: 900;
+    font-style: italic;
     text-shadow: 3px 1px 10px rgba(195, 186, 188, 0.165);
     font-size: 30px;
     flex: 1 0 0;
@@ -335,14 +335,15 @@
   }
 
   .CircularProgressbar-text {
-    font-weight: 800;
+    font-weight: 900;
     fill: white;
     text-shadow: 3px 3px 10px
       color-mix(in srgb, var(--primary) 50%, transparent);
     font-size: 30px;
-    font-variation-settings: "slnt" -8;
-    height: 80px;
-
+    font-style: italic;
+    line-height: 80px;
+    transform: translateY(2px);
+    
     @supports not (
       text-shadow: 3px 3px 10px
         color-mix(in srgb, var(--primary) 60%, transparent)
