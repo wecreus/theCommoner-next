@@ -1,10 +1,9 @@
-// TODO: stylize scrollbar
 .page-selector {
   background: linear-gradient(
-    -45deg, rgba(12, 12, 12, 0.8) 0%, rgba(35, 27, 54, 0.2) 120%
+    -45deg,
+    rgba(17, 17, 19, 0.8) 0%,
+    rgba(36, 42, 49, 0.8) 120%
   );
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -18,7 +17,6 @@
 
   @include fromDesktopScreen {
     padding: 20px 17px;
-    
   }
 
   @include toPhoneScreen {
@@ -35,7 +33,6 @@
     animation: jumpPageSelector 6s normal;
     width: 100px;
     padding: 40px 0;
-    
 
     @include fromDesktopScreen {
       width: 150px;
@@ -208,9 +205,8 @@
 
   & .react-typed {
     position: absolute;
-    
   }
-  
+
   &__background {
     text-shadow: none;
     background: transparent;

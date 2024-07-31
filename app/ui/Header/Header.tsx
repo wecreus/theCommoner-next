@@ -28,6 +28,10 @@ const Header = () => {
   };
 
   useEffect(() => {
+    if (window.scrollY > 0) {
+      setIsScrolled(true);
+    }
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
     };
