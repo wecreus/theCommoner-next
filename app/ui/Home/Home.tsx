@@ -72,7 +72,7 @@ const Home = ({
         <Gallery gallery={gallery} />
       </section>
       <section className="card card-map" ref={mapRef}>
-        {wasMapVisible && <MapSection />}
+        {wasMapVisible && <MapSection isVisible={isMapVisible} />}
       </section>
     </>
   );
