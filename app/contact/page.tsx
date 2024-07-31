@@ -58,6 +58,7 @@ const ContactMe = () => {
               minLength={2}
               placeholder="Your name"
               type="text"
+              autoComplete="off"
             />
           </div>
           <div className="Form-content__group">
@@ -76,6 +77,7 @@ const ContactMe = () => {
                 }
               )}
               placeholder="Your email address"
+              autoComplete="off"
             />
           </div>
           <div className="Form-content__group">

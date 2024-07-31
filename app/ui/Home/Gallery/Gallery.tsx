@@ -63,13 +63,13 @@ const Gallery = memo(({ gallery }: { gallery: GalleryType[] }) => {
         />
         <SocialIcon
           name="Flickr"
-          gradient={"linear-gradient(135deg, #0066DD 0%, #FF0084 80%)"}
+          gradient={"linear-gradient(135deg, #0066DD 0%, #FF0084 100%)"}
           Icon={Flickr}
           url={"https://www.flickr.com/photos/166330239@N03/"}
         />
         <SocialIcon
           name="X"
-          gradient={"linear-gradient(135deg, #000 0%, #000 80%)"}
+          gradient={"linear-gradient(35deg, #000 0%, #313131 150%)"} 
           Icon={Xcom}
           url={"https://www.x.com/wecreus"}
         />
