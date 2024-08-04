@@ -207,12 +207,12 @@
       justify-content: space-evenly;
 
       & .SocialIcon {
-        width: 100px;
-        height: 100px;
+        width: 76px;
+        height: 76px;
 
         @include toTabletScreen {
-          width: 80px;
-          height: 80px;
+          width: 60px;
+          height: 60px;
         }
 
         &-title {

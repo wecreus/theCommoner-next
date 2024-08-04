@@ -30,25 +30,16 @@ const SocialIcon = ({
       target={"_blank"}
       rel="noopener noreferrer"
     >
-      <div className={"SocialIcon"}>
-        <div className="SocialIcon-front">
-          <svg className="SocialIcon-front__border" viewBox="0 0 80 80">
-            <rect rx="25" stroke="url(#borderGradient)" />
-          </svg>
-          <Icon className="SocialIcon-front__icon" />
-        </div>
-        <div
-          className="SocialIcon-back"
-          style={{
-            background: gradient,
-          }}
-        />
-        <GradientSVG
-          idCSS={"borderGradient"}
-          startColor={"#ffffff"}
-          endColor={"#ffffff00"}
-          rotation={"40"}
-        />
+      <div
+        className={"SocialIcon"}
+        style={{
+          background: gradient,
+        }}
+      >
+        <svg className="SocialIcon__border" viewBox="0 0 80 80" id="borderIcon">
+          <rect rx="23" x="0.5" y="0.5" />
+        </svg>
+        <Icon className="SocialIcon__icon" />
       </div>
       <div className="SocialIcon-title">{name}</div>
     </a>
