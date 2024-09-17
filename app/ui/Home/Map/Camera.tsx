@@ -3,6 +3,10 @@ import { CameraControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useAppDispatch } from "@/lib/store/hooks";
 import { updateIsInRange } from "@/lib/store/globe/globeSlice";
+import {
+  CAMERA_INITIAL_POSITION,
+  CAMERA_AFTER_INTERVAL_POSITION,
+} from "@/lib/utils/enums/globe";
 
 // TODO: rotate camera to interesting point when idle
 const Camera = () => {
@@ -28,10 +32,25 @@ const Camera = () => {
   }, [isInRange, dispatch]);
 
   useLayoutEffect(() => {
-    cameraControlsRef.current?.setLookAt(42.56, 487, 601, 0, 0, 0);
+    cameraControlsRef.current?.setLookAt(
+      CAMERA_INITIAL_POSITION.X,
+      CAMERA_INITIAL_POSITION.Y,
+      CAMERA_INITIAL_POSITION.Z,
+      CAMERA_INITIAL_POSITION.TARGET_X,
+      CAMERA_INITIAL_POSITION.TARGET_Y,
+      CAMERA_INITIAL_POSITION.TARGET_Z
+    );
 
     const myTimeout = setTimeout(() => {
-      cameraControlsRef.current?.setLookAt(55.12, 87.91, 95.46, 0, 0, 0, true);
+      cameraControlsRef.current?.setLookAt(
+        CAMERA_AFTER_INTERVAL_POSITION.X,
+        CAMERA_AFTER_INTERVAL_POSITION.Y,
+        CAMERA_AFTER_INTERVAL_POSITION.Z,
+        CAMERA_AFTER_INTERVAL_POSITION.TARGET_X,
+        CAMERA_AFTER_INTERVAL_POSITION.TARGET_Y,
+        CAMERA_AFTER_INTERVAL_POSITION.TARGET_Z,
+        true
+      );
     }, 500);
     return () => clearTimeout(myTimeout);
   }, []);
