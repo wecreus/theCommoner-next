@@ -8,6 +8,8 @@ import clsx from "clsx";
 
 import ThemeSwitcher from "@/ui/ThemeSwitcher";
 
+// TODO: Try out framer motion for animating header
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef(null);

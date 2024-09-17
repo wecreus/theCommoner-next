@@ -1,10 +1,14 @@
 import { useGLTF } from "@react-three/drei";
-// import HeartShape from "@/public/shapes/heart.glb";
 import { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { a, useSpring, config } from "@react-spring/three";
 import { Outlines } from "@react-three/drei";
 import type { Object3D, Mesh } from "three";
+import {
+  HEART_SHADOW_PLANE,
+  HEART_POSITION,
+  HEART_LIGHT_POSITION,
+} from "@/lib/utils/enums/globe";
 
 type GLTFResult = {
   nodes: {
@@ -12,7 +16,6 @@ type GLTFResult = {
   };
 };
 
-// TODO: add shadow
 const Heart = ({ handleClick }: { handleClick: () => void }) => {
   const { nodes } = useGLTF("/shapes/heart.glb") as unknown as GLTFResult;
   const heartRef = useRef<Object3D>(null);
@@ -25,7 +28,7 @@ const Heart = ({ handleClick }: { handleClick: () => void }) => {
   });
 
   const { scale, rotation } = useSpring({
-    scale: active ? 4 : 2.5,
+    scale: active ? 5 : 3.5,
     rotation: [0, active ? -0.85 : 0, active ? 0.6 : 0],
     config: config.gentle,
   });
@@ -43,20 +46,33 @@ const Heart = ({ handleClick }: { handleClick: () => void }) => {
       <mesh
         receiveShadow
         castShadow
-        position={[28.8, 52.5, 59.5]}
-        rotation={[Math.PI / 1.5, Math.PI * 0.92, 0]}
+        position={[
+          HEART_SHADOW_PLANE.X,
+          HEART_SHADOW_PLANE.Y,
+          HEART_SHADOW_PLANE.Z,
+        ]}
+        rotation={[
+          HEART_SHADOW_PLANE.ROTATION_X,
+          HEART_SHADOW_PLANE.ROTATION_Y,
+          HEART_SHADOW_PLANE.ROTATION_Z,
+        ]}
         scale={4}
       >
         <planeGeometry />
+        {/* <meshBasicMaterial color="green" side={DoubleSide} /> */}
         <shadowMaterial attach="material" opacity={0.15} />
       </mesh>
       <directionalLight
         castShadow
-        position={[40, 55, 75.5]}
+        position={[
+          HEART_LIGHT_POSITION.X,
+          HEART_LIGHT_POSITION.Y,
+          HEART_LIGHT_POSITION.Z,
+        ]}
         intensity={0.1}
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
-        target-position={[28.8, 52.5, 60.5]}
+        target-position={[HEART_POSITION.X, HEART_POSITION.Y, HEART_POSITION.Z]}
         shadow-camera-near={0.1}
         shadow-camera-far={20}
         shadow-camera-left={-10}
@@ -70,7 +86,7 @@ const Heart = ({ handleClick }: { handleClick: () => void }) => {
         castShadow
         receiveShadow
         geometry={nodes.Cube002_Cube024.geometry}
-        position={[28.8, 53.15, 59.5]}
+        position={[HEART_POSITION.X, HEART_POSITION.Y, HEART_POSITION.Z]}
         scale={scale}
         rotation={rotation}
         onPointerEnter={() => setActive(true)}

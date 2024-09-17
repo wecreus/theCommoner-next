@@ -10,11 +10,10 @@ import Flickr from "@/public/icons/flickr.svg";
 import Instagram from "@/public/icons/instagram.svg";
 import Xcom from "@/public/icons/Xcom.svg";
 
-
 const Gallery = memo(({ gallery }: { gallery: GalleryType[] }) => {
 
-  if(!gallery) return <></>;
-  
+  if (!gallery) return <></>;
+
   return (
     <div className="card__content card__gallery animate-render">
       <Carousel
@@ -41,7 +40,7 @@ const Gallery = memo(({ gallery }: { gallery: GalleryType[] }) => {
             className="carousel-gallery__image"
             key={`${picture.title}${i}`}
           >
-            <span style={{ userSelect: "none"}}>{picture.title}</span>
+            <span style={{ userSelect: "none" }}>{picture.title}</span>
           </div>
         ))}
       </Carousel>
@@ -69,7 +68,7 @@ const Gallery = memo(({ gallery }: { gallery: GalleryType[] }) => {
         />
         <SocialIcon
           name="X"
-          gradient={"linear-gradient(35deg, #000 0%, #313131 150%)"} 
+          gradient={"linear-gradient(35deg, #000 0%, #313131 150%)"}
           Icon={Xcom}
           url={"https://www.x.com/wecreus"}
         />

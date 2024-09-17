@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import GradientSVG from "@/ui/common/GradientSVG";
 import "./SocialIcon.scss";
 
+// TODO: this social icon is pretty, maybe recreate it with shadcn/ui
 interface SocialIconProps {
   /** extra ClassName */
   className?: string;

@@ -4,6 +4,7 @@ import MapIcon from "@/public/icons/map.svg";
 import Linkedin from "@/public/icons/linkedin.svg";
 import Telegram from "@/public/icons/telegram.svg";
 import PDFicon from "@/public/icons/PDF.svg";
+import { CONTACT_LOCATION } from "@/lib/utils/enums";
 import { memo } from "react";
 import "./FormSidebar.scss";
 
@@ -57,7 +58,10 @@ const FormSidebar = memo(() => {
         <div className="Form-profile__head">
           <div className="Form-profile__name">
             <b>Danylo Riabchuk</b>
-            <span className="Form-profile__name--work">Looking for work</span>
+            <div className="Form-profile__name--work">
+              found a full time position
+              <span className="Form-profile__name--work-emoji">🥳</span>
+            </div>
           </div>
           <div
             className="Form-profile__picture"
@@ -70,14 +74,12 @@ const FormSidebar = memo(() => {
           Front-end developer based in{" "}
           <a
             className={"Form-profile__description--link"}
-            href={
-              "https://www.google.com/maps/place/Ternopil,+Ternopil+Oblast,+46003/@46.9651469,19.2062124,3.98z"
-            }
+            href={CONTACT_LOCATION.MAP_LINK}
             target={"_blank"}
             rel="noopener noreferrer"
             title={"Show on the map"}
           >
-            Ternopil, Ukraine
+            {CONTACT_LOCATION.TITLE}
             <MapIcon className="Form-profile__description--link-icon" />
           </a>
         </p>
