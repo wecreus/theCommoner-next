@@ -1,5 +1,4 @@
 import { useGLTF } from "@react-three/drei";
-// import HeartShape from "@/public/shapes/heart.glb";
 import { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { a, useSpring, config } from "@react-spring/three";
@@ -12,7 +11,6 @@ type GLTFResult = {
   };
 };
 
-// TODO: add shadow
 const Heart = ({ handleClick }: { handleClick: () => void }) => {
   const { nodes } = useGLTF("/shapes/heart.glb") as unknown as GLTFResult;
   const heartRef = useRef<Object3D>(null);
