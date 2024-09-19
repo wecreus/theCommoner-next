@@ -1,8 +1,5 @@
 import {
   useRive,
-  Layout,
-  Fit,
-  Alignment,
   useStateMachineInput,
 } from "@rive-app/react-canvas";
 
@@ -13,11 +10,13 @@ interface ILogoProps {
 const STATE_MACHINE_NAME = "State Machine 1";
 const INPUT_NAME = "hover";
 
+// TODO: fix blinking when component loads
 const Logo = ({ onClick }: ILogoProps) => {
   const { rive, RiveComponent } = useRive({
-    src: "/icons/pen animation.riv",
+    src: "/icons/thecommoner.riv",
     autoplay: true,
     stateMachines: STATE_MACHINE_NAME,
+    animations: ["idle"]
   });
 
   const onHoverInput = useStateMachineInput(
@@ -39,7 +38,7 @@ const Logo = ({ onClick }: ILogoProps) => {
   };
 
   return (
-    <div className="Header-logo" onClick={onClick}>
+    <div className="Header-logo" onTouchStart={onClick} onMouseDown={onClick}>
       {!rive && (
         <picture>
           <img src={"/icons/logoTransparent.png"} title="Home" alt="Home" />
@@ -48,6 +47,8 @@ const Logo = ({ onClick }: ILogoProps) => {
       <RiveComponent
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onTouchEnd={handleMouseLeave}
+        onTouchStart={handleMouseEnter}
       />
     </div>
   );
