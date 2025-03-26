@@ -13,14 +13,16 @@ extend({ ThreeGlobe });
 
 declare module "@react-three/fiber" {
   interface ThreeElements {
-    // @ts-ignore Object3DNode doesn't exist in this version of react-three-fiber
-    threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>;
+    threeGlobe: {
+      ref?: React.RefObject<ThreeGlobe | null>;
+      args?: any[];
+    };
   }
 }
 
 // TODO: add clouds from drei
 const Globe = () => {
-  const globeRef = useRef<ThreeGlobe>(null);
+  const globeRef = useRef<ThreeGlobe | null>(null);
   // forcing camera to be of type CameraControls no matter what
   const controls = useThree((state) => state.controls) as unknown as CameraControls;
 
