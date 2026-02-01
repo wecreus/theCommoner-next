@@ -4,6 +4,7 @@ import "./Header.scss";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Logo from "./Logo";
 import clsx from "clsx";
 
 import ThemeSwitcher from "@/ui/ThemeSwitcher";
@@ -49,9 +50,7 @@ const Header = () => {
       className={clsx("Header", { "Header-collapse": isScrolled })}
       onClick={handleHeaderClick}
     >
-      <picture className="Header-logo" onClick={handleLogoClick}>
-        <img src={"/icons/logoTransparent.png"} title="Home" alt="Home" />
-      </picture>
+      <Logo onClick={handleLogoClick} />
 
       <ul className="Header-sections">
         <Link href="/contact" className="Header-sections__section">

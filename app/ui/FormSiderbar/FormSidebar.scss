@@ -113,6 +113,10 @@
         &-emoji {
           font-style: normal;
         }
+
+        @include toPhoneScreen {
+          font-size: 55%;
+        }
       }
     }
 
