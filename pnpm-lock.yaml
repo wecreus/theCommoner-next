@@ -27,8 +27,8 @@ importers:
         specifier: ^2.2.5
         version: 2.2.5(react-redux@9.1.2(react@19.2.4)(redux@5.0.1)(types-react@19.0.0-rc.1))(react@19.2.4)
       '@rive-app/react-canvas':
-        specifier: ^4.14.1
-        version: 4.14.1(react@19.2.4)
+        specifier: ^4.26.2
+        version: 4.26.2(react@19.2.4)
       '@types/d3':
         specifier: ^7.4.3
         version: 7.4.3
@@ -1465,13 +1465,13 @@ packages:
       react-redux:
         optional: true
 
-  '@rive-app/canvas@2.21.1':
-    resolution: {integrity: sha512-Gdf9nsfnByeBqqUSHqgC/Gz2j72LgO8ZykT9tANIXHnjMCrKlgpP7B/C/+dPFP2d8mcj6gUKKuhBF6i7OKqYvQ==}
+  '@rive-app/canvas@2.34.2':
+    resolution: {integrity: sha512-s+Um9xHNDkZQTJ8oZZpJFLwQqJ2w7OA9Dsai+5vi1Y6fwUSHG8eRzgWVe6idT1rj1JkjXYZEWV1vlP0jkLQ4bw==}
 
-  '@rive-app/react-canvas@4.14.1':
-    resolution: {integrity: sha512-52sk/TtU35hrm8xWOpDvxvTQ/j3D6I3Ztagj83q1VlDtx3g5mPo4bkGBEvnkf4hxztztIXGaPAtfbVqKEj4RFg==}
+  '@rive-app/react-canvas@4.26.2':
+    resolution: {integrity: sha512-AAP0/jmU53io/qv26O8cT20FfgajS+8n0MSL6s52bCEX/zfKkbEZkJoqX5BS9BLbQkItiteiiZJR83KdgzHZ4w==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0
 
   '@rushstack/eslint-patch@1.10.3':
     resolution: {integrity: sha512-qC/xYId4NMebE6w/V33Fh9gWxLgURiNYgVNObbJl2LZv0GUUItCcCqC5axQSwRaAgaxl2mELq1rMzlswaQ0Zxg==}
@@ -5601,11 +5601,11 @@ snapshots:
       react: 19.2.4
       react-redux: 9.1.2(react@19.2.4)(redux@5.0.1)(types-react@19.0.0-rc.1)
 
-  '@rive-app/canvas@2.21.1': {}
+  '@rive-app/canvas@2.34.2': {}
 
-  '@rive-app/react-canvas@4.14.1(react@19.2.4)':
+  '@rive-app/react-canvas@4.26.2(react@19.2.4)':
     dependencies:
-      '@rive-app/canvas': 2.21.1
+      '@rive-app/canvas': 2.34.2
       react: 19.2.4
 
   '@rushstack/eslint-patch@1.10.3': {}

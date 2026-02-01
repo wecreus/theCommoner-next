@@ -4,7 +4,7 @@ import { memo, useEffect, useState } from "react";
 import { updateTheme } from "@/lib/store/theme/themeSlice";
 import { useAppSelector, useAppDispatch } from "@/lib/store/hooks";
 
-const ThemeProvider = memo(({ children }: { children: React.ReactNode }) => {
+const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const storeTheme = useAppSelector((store) => store.theme.storedTheme);
   const [currentTheme, setCurrentTheme] = useState<number>(0);
   const dispatch = useAppDispatch();
@@ -36,7 +36,7 @@ const ThemeProvider = memo(({ children }: { children: React.ReactNode }) => {
   }, [storeTheme]);
 
   return <main className={`theme${currentTheme + 1}`}>{children}</main>;
-});
+};
 
 ThemeProvider.displayName = "ThemeProvider";
 
